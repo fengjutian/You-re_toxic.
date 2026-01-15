@@ -4,8 +4,7 @@
     "pages/forward/forward",
     "pages/reverse/reverse",
     "pages/result/result",
-    "pages/tips/tips",
-    "pages/master/mine/mine"
+    "pages/tips/tips"
   ],
   "window": {
     "navigationBarTitleText": "关系影响评估",
