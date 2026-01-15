@@ -1,5 +1,4 @@
 <view class="container">
-
   <view wx:for="{{tips}}" wx:for-item="tip" wx:key="index" class="tip-card" style="border-left-color: {{tip.color}}">
     <view class="tip-header">
       <view class="tip-color-indicator" style="background-color: {{tip.color}}"></view>
