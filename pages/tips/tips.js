@@ -100,44 +100,64 @@ Page({
   data:{
     tips:[]
   },
-  onLoad(){
+  onLoad(){    console.log('Analysis data in tips.js:', app.globalData.analysis);
     const analysis = app.globalData.analysis || {}
     const tips = []
 
+    console.log('Reverse dimension map:', reverseDimMap);
+    console.log('Tips map keys:', Object.keys(tipsMap));
+
     // 正向维度高风险
     const tirsHigh = Array.isArray(analysis.tirsHigh) ? analysis.tirsHigh : [];
+    console.log('TIRS High dimensions:', tirsHigh);
+    
     tirsHigh.forEach(dim=>{
+      console.log('Processing TIRS dimension:', dim);
       // Get the technical name from the user-friendly name
       const techDim = reverseDimMap[dim] || dim
+      console.log('Technical dimension:', techDim);
       // Get the suggestions using the technical name
       const suggestions = tipsMap[techDim] || []
+      console.log('Suggestions found:', suggestions);
       
       if (suggestions.length > 0) {
+        console.log('Adding tips for:', dim);
         tips.push({ 
           dimName: dim, // Keep the user-friendly name for display
           suggestions: suggestions 
         })
+      } else {
+        console.log('No suggestions found for:', techDim);
       }
     })
     
     // 反向维度最高
     const rDim = analysis.rtdrsTop
+    console.log('RTDRS Top dimension:', rDim);
     if(rDim){
+      console.log('Processing RTDRS dimension:', rDim);
       // Get the technical name from the user-friendly name
       const techDim = reverseDimMap[rDim] || rDim
+      console.log('Technical dimension:', techDim);
       // Get the suggestions using the technical name
       const suggestions = tipsMap[techDim] || []
+      console.log('Suggestions found:', suggestions);
       
       if (suggestions.length > 0) {
+        console.log('Adding tips for:', rDim);
         tips.push({ 
           dimName: rDim, // Keep the user-friendly name for display
           suggestions: suggestions 
         })
+      } else {
+        console.log('No suggestions found for:', techDim);
       }
     }
 
     // If no tips found, provide general tips
+    console.log('Tips before fallback:', tips);
     if (tips.length === 0) {
+      console.log('Adding fallback tips');
       tips.push({
         dimName: '一般建议',
         suggestions: [
@@ -148,6 +168,18 @@ Page({
       })
     }
     
-    this.setData({ tips })
+    // Ensure every tip has at least one suggestion
+    const safeTips = tips.map(tip => {
+      if (!Array.isArray(tip.suggestions) || tip.suggestions.length === 0) {
+        return {
+          ...tip,
+          suggestions: ['保持冷静，理性思考问题，寻求支持。']
+        };
+      }
+      return tip;
+    });
+    
+    console.log('Final tips:', safeTips);
+    this.setData({ tips: safeTips })
   }
 })

@@ -3,10 +3,10 @@
     <text>自我保护小技巧</text>
   </view>
 
-  <view wx:for="{{tips}}" wx:key="index" class="tip-card">
+  <view wx:for="{{tips}}" wx:for-item="tip" wx:key="index" class="tip-card">
     <view class="tip-dim">{{tip.dimName}}</view>
-    <view wx:for="{{tip.suggestions}}" wx:key="i" class="tip-item">
-      • {{tip.suggestions[i]}}
+    <view wx:for="{{tip.suggestions}}" wx:for-item="suggestion" wx:for-index="i" wx:key="i" class="tip-item">
+      • {{suggestion}}
     </view>
   </view>
 </view>
