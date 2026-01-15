@@ -49,9 +49,7 @@
   "projectname": "TDesign",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {
-
-  },
+  "condition": {},
   "editorSetting": {
     "tabIndent": "auto",
     "tabSize": 2
