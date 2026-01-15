@@ -25,8 +25,6 @@ Page({
     }
   },
   onLoad(){
-    console.log('Global Data:', app.globalData)
-    
     const tirs = app.globalData.tirsAnswers || {}
     const rtdrs = app.globalData.rtdrsAnswers || {}
 
@@ -36,7 +34,6 @@ Page({
       if (arr.length === 0) return false
       
       const avg = arr.reduce((a,b)=>a+b,0)/arr.length
-      console.log(`Dimension ${dim}: Average = ${avg}`)
       return avg >= 2
     }).map(dim => dimNames[dim] || dim)  // 使用友好的维度名称
 
@@ -48,7 +45,6 @@ Page({
       if (arr.length === 0) return
       
       const val = Math.max(...arr)
-      console.log(`Reverse Dimension ${dim}: Max = ${val}`)
       if(val > maxVal){
         maxVal = val
         rtdrsTop = dimNames[dim] || dim  // 使用友好的维度名称
@@ -64,8 +60,6 @@ Page({
       status = '关系中存在潜在风险信号'
     }
 
-    console.log('Final Analysis:', { status, tirsHigh, rtdrsTop })
-    
     const analysis = { status, tirsHigh, rtdrsTop }
     app.globalData.analysis = analysis
     this.setData({ analysis })

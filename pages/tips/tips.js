@@ -101,22 +101,16 @@ Page({
     tips:[]
   },
   onLoad(){
-    console.log('Analysis Data:', app.globalData.analysis)
-    
     const analysis = app.globalData.analysis || {}
     const tips = []
 
     // 正向维度高风险
-    (analysis.tirsHigh || []).forEach(dim=>{
-      console.log('Processing dim:', dim)
-      
+    const tirsHigh = Array.isArray(analysis.tirsHigh) ? analysis.tirsHigh : [];
+    tirsHigh.forEach(dim=>{
       // Get the technical name from the user-friendly name
       const techDim = reverseDimMap[dim] || dim
-      console.log('Technical dim:', techDim)
-      
       // Get the suggestions using the technical name
       const suggestions = tipsMap[techDim] || []
-      console.log('Suggestions:', suggestions)
       
       if (suggestions.length > 0) {
         tips.push({ 
@@ -129,15 +123,10 @@ Page({
     // 反向维度最高
     const rDim = analysis.rtdrsTop
     if(rDim){
-      console.log('Processing reverse dim:', rDim)
-      
       // Get the technical name from the user-friendly name
       const techDim = reverseDimMap[rDim] || rDim
-      console.log('Technical reverse dim:', techDim)
-      
       // Get the suggestions using the technical name
       const suggestions = tipsMap[techDim] || []
-      console.log('Reverse suggestions:', suggestions)
       
       if (suggestions.length > 0) {
         tips.push({ 
@@ -159,7 +148,6 @@ Page({
       })
     }
     
-    console.log('Final Tips:', tips)
     this.setData({ tips })
   }
 })
