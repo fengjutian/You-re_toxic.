@@ -78,30 +78,88 @@ const dimNameMap = {
   imbalance:'付出失衡'
 }
 
+// Reverse mapping: user-friendly name to technical name
+const reverseDimMap = {
+  '控制行为': 'control',
+  '情感贬低': 'devalue',  // Note: This matches the name used in result.js
+  '自我中心': 'selfish',  // Note: This matches the name used in result.js
+  '情绪依赖': 'emotional', // Note: This matches the name used in result.js
+  '操纵行为': 'manipulation', // Note: This matches the name used in result.js
+  '不信任': 'distrust', // Note: This matches the name used in result.js
+  '情绪消耗': 'emotional_drain',
+  '自我怀疑': 'self_doubt',
+  '边界侵蚀': 'boundary_erosion',  // Note: This matches the name used in result.js
+  '内疚施压': 'guilt_pressure', // Note: This matches the name used in result.js
+  '回避沟通': 'avoidance', // Note: This matches the name used in result.js
+  '付出失衡': 'imbalance',
+  // Also include the original dimNameMap mappings for backward compatibility
+  ...Object.fromEntries(Object.entries(dimNameMap).map(([key, value]) => [value, key]))
+}
+
 Page({
   data:{
     tips:[]
   },
   onLoad(){
-    const analysis = app.globalData.analysis
+    console.log('Analysis Data:', app.globalData.analysis)
+    
+    const analysis = app.globalData.analysis || {}
     const tips = []
 
     // 正向维度高风险
-    analysis.tirsHigh.forEach(dim=>{
-      tips.push({ 
-        dimName: dimNameMap[dim] || dim, 
-        suggestions: tipsMap[dim] || [] 
-      })
+    (analysis.tirsHigh || []).forEach(dim=>{
+      console.log('Processing dim:', dim)
+      
+      // Get the technical name from the user-friendly name
+      const techDim = reverseDimMap[dim] || dim
+      console.log('Technical dim:', techDim)
+      
+      // Get the suggestions using the technical name
+      const suggestions = tipsMap[techDim] || []
+      console.log('Suggestions:', suggestions)
+      
+      if (suggestions.length > 0) {
+        tips.push({ 
+          dimName: dim, // Keep the user-friendly name for display
+          suggestions: suggestions 
+        })
+      }
     })
+    
     // 反向维度最高
     const rDim = analysis.rtdrsTop
     if(rDim){
-      tips.push({ 
-        dimName: dimNameMap[rDim] || rDim, 
-        suggestions: tipsMap[rDim] || [] 
-      })
+      console.log('Processing reverse dim:', rDim)
+      
+      // Get the technical name from the user-friendly name
+      const techDim = reverseDimMap[rDim] || rDim
+      console.log('Technical reverse dim:', techDim)
+      
+      // Get the suggestions using the technical name
+      const suggestions = tipsMap[techDim] || []
+      console.log('Reverse suggestions:', suggestions)
+      
+      if (suggestions.length > 0) {
+        tips.push({ 
+          dimName: rDim, // Keep the user-friendly name for display
+          suggestions: suggestions 
+        })
+      }
     }
 
+    // If no tips found, provide general tips
+    if (tips.length === 0) {
+      tips.push({
+        dimName: '一般建议',
+        suggestions: [
+          '保持良好的自我觉察，定期反思关系质量。',
+          '建立支持系统，与信任的朋友或家人保持联系。',
+          '关注自己的情绪健康，必要时寻求专业帮助。'
+        ]
+      })
+    }
+    
+    console.log('Final Tips:', tips)
     this.setData({ tips })
   }
 })
