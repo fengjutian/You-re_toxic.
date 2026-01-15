@@ -180,6 +180,23 @@ const reverseDimMap = {
   ...Object.fromEntries(Object.entries(dimNameMap).map(([key, value]) => [value, key]))
 }
 
+// Dimension color mapping for visual enhancement
+const dimColors = {
+  'control': '#FF6B6B',        // 红色 - 控制行为
+  'devalue': '#FFA502',        // 橙色 - 情感贬低
+  'selfish': '#FFD93D',        // 黄色 - 自我中心
+  'emotional': '#6BCB77',      // 绿色 - 情绪依赖
+  'manipulation': '#4D96FF',   // 蓝色 - 操纵行为
+  'distrust': '#9D84B7',       // 紫色 - 不信任
+  'emotional_drain': '#FF6B6B', // 红色 - 情绪消耗
+  'self_doubt': '#FFA502',      // 橙色 - 自我怀疑
+  'boundary_erosion': '#FFD93D',// 黄色 - 边界侵蚀
+  'guilt_pressure': '#6BCB77',  // 绿色 - 内疚施压
+  'avoidance': '#4D96FF',       // 蓝色 - 回避沟通
+  'imbalance': '#9D84B7',       // 紫色 - 付出失衡
+  '一般建议': '#6C757D'        // 灰色 - 一般建议
+}
+
 Page({
   data:{
     tips:[]
@@ -206,9 +223,12 @@ Page({
       
       if (suggestions.length > 0) {
         console.log('Adding tips for:', dim);
+        // Get color for this dimension
+        const color = dimColors[techDim] || dimColors['一般建议'];
         tips.push({ 
           dimName: dim, // Keep the user-friendly name for display
-          suggestions: suggestions 
+          suggestions: suggestions,
+          color: color
         })
       } else {
         console.log('No suggestions found for:', techDim);
@@ -229,9 +249,12 @@ Page({
       
       if (suggestions.length > 0) {
         console.log('Adding tips for:', rDim);
+        // Get color for this dimension
+        const color = dimColors[techDim] || dimColors['一般建议'];
         tips.push({ 
           dimName: rDim, // Keep the user-friendly name for display
-          suggestions: suggestions 
+          suggestions: suggestions,
+          color: color
         })
       } else {
         console.log('No suggestions found for:', techDim);
@@ -248,19 +271,25 @@ Page({
           '保持良好的自我觉察，定期反思关系质量。',
           '建立支持系统，与信任的朋友或家人保持联系。',
           '关注自己的情绪健康，必要时寻求专业帮助。'
-        ]
+        ],
+        color: dimColors['一般建议']
       })
     }
     
-    // Ensure every tip has at least one suggestion
+    // Ensure every tip has at least one suggestion and color
     const safeTips = tips.map(tip => {
+      const safeTip = {
+        ...tip,
+        color: tip.color || dimColors['一般建议']
+      };
+      
       if (!Array.isArray(tip.suggestions) || tip.suggestions.length === 0) {
         return {
-          ...tip,
+          ...safeTip,
           suggestions: ['保持冷静，理性思考问题，寻求支持。']
         };
       }
-      return tip;
+      return safeTip;
     });
     
     console.log('Final tips:', safeTips);

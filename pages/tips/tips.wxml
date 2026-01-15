@@ -1,12 +1,15 @@
 <view class="container">
-  <view class="tips-header">
-    <text>自我保护小技巧</text>
-  </view>
 
-  <view wx:for="{{tips}}" wx:for-item="tip" wx:key="index" class="tip-card">
-    <view class="tip-dim">{{tip.dimName}}</view>
-    <view wx:for="{{tip.suggestions}}" wx:for-item="suggestion" wx:for-index="i" wx:key="i" class="tip-item">
-      • {{suggestion}}
+  <view wx:for="{{tips}}" wx:for-item="tip" wx:key="index" class="tip-card" style="border-left-color: {{tip.color}}">
+    <view class="tip-header">
+      <view class="tip-color-indicator" style="background-color: {{tip.color}}"></view>
+      <view class="tip-dim">{{tip.dimName}}</view>
+    </view>
+    <view class="tip-suggestions">
+      <view wx:for="{{tip.suggestions}}" wx:for-item="suggestion" wx:for-index="i" wx:key="i" class="tip-item">
+        <text class="tip-bullet" style="color: {{tip.color}}">•</text>
+        <text class="tip-content">{{suggestion}}</text>
+      </view>
     </view>
   </view>
 </view>
