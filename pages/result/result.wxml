@@ -1,0 +1,4 @@
+<view class="container">
+  <view>综合关系状态：{{result.status}}</view>
+  <button bindtap="goTips">查看自我保护建议</button>
+</view>

@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="notice">
+    本测评为非诊断性工具，仅用于帮助理解关系中的行为模式与影响。
+  </view>
+  <button class="button" bindtap="goForward">他人行为风险评估</button>
+  <button class="button" bindtap="goReverse">自我消耗风险评估</button>
+</view>
