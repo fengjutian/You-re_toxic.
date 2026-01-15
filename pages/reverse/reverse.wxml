@@ -7,9 +7,9 @@
     <view class="question">{{current.question}}</view>
 
     <radio-group bindchange="onChange" value="{{selectedValue}}">
-      <view wx:for="{{options}}" wx:key="value" wx:for-item="option" class="option">
+      <view wx:for="{{options}}" wx:key="value" class="option">
         <label class="radio-label">
-          <radio value="{{option.value}}" />
+          <radio value="{{option.value}}" checked="{{selectedValue===option.value}}" />
           <text>{{option.label}}</text>
         </label>
       </view>

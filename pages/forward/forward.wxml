@@ -1,15 +1,15 @@
 <view class="container">
   <view class="notice">
-    本测评为非诊断性工具，仅用于理解关系中的行为模式与影响。
+    本测评为非诊断性工具，仅用于理解关系中的行为模式。
   </view>
 
   <view class="question-box">
     <view class="question">{{current.question}}</view>
 
     <radio-group bindchange="onChange" value="{{selectedValue}}">
-      <view wx:for="{{options}}" wx:key="value" wx:for-item="option" class="option">
+      <view wx:for="{{options}}" wx:key="value" class="option">
         <label class="radio-label">
-          <radio value="{{option.value}}" />
+          <radio value="{{option.value}}" checked="{{selectedValue===option.value}}" />
           <text>{{option.label}}</text>
         </label>
       </view>
