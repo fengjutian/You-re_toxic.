@@ -10,5 +10,6 @@
     "navigationBarTitleText": "关系影响评估",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "style": "v2"
 }
