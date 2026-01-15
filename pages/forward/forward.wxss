@@ -3,6 +3,18 @@
   background-color: #f7f7f7;
   min-height: 100vh;
 }
+
+.question-counter {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #007aff;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
 .question-box {
   background-color: #fff;
   padding: 16px;

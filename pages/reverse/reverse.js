@@ -43,7 +43,8 @@ Page({
       { value:'1', label:'偶尔' },
       { value:'2', label:'经常' },
       { value:'3', label:'几乎总是' }
-    ]
+    ],
+    questionsLength: questions.length
   },
 
   onChange(e){

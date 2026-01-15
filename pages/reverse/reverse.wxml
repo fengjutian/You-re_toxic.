@@ -1,4 +1,7 @@
 <view class="container">
+  <view class="question-counter">
+    <text>{{index + 1}} / {{questionsLength}}</text>
+  </view>
   <view class="question-box">
     <view class="question">{{current.question}}</view>
 
