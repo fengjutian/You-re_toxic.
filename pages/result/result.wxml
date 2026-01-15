@@ -1,4 +1,18 @@
 <view class="container">
-  <view>综合关系状态：{{result.status}}</view>
+  <view class="section">
+    <view class="title">关系整体状态</view>
+    <view class="text">{{analysis.status}}</view>
+  </view>
+
+  <view class="section">
+    <view class="title">他人行为风险维度</view>
+    <view wx:for="{{analysis.tirsHigh}}" wx:key="item">{{item}}</view>
+  </view>
+
+  <view class="section">
+    <view class="title">主要自我消耗体验</view>
+    <view>{{analysis.rtdrsTop}}</view>
+  </view>
+
   <button bindtap="goTips">查看自我保护建议</button>
 </view>

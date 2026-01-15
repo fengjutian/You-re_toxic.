@@ -1,1 +1,7 @@
-.container { padding: 24px; }
+.container {
+  padding: 24px;
+}
+.tip {
+  margin-bottom: 12px;
+  color: #444;
+}

@@ -1,66 +1,31 @@
-// pages/tips/tips.js
+const app = getApp()
+
+const tipsMap = {
+  control: '尝试明确表达个人决策空间。',
+  devalue: '关注自身感受的合理性。',
+  selfish: '评估关系中的互惠程度。',
+  emotional: '为情绪恢复预留空间。',
+  manipulation: '留意暗示性压力来源。',
+  distrust: '确认信任边界是否被尊重。',
+  emotional_drain: '优先安排情绪修复时间。',
+  self_doubt: '记录事实以校准自我判断。',
+  boundary_erosion: '重新确认个人界限。',
+  guilt_pressure: '区分责任与过度内疚。',
+  avoidance: '逐步恢复安全表达。',
+  imbalance: '审视付出与回报结构。'
+}
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    tips: []
   },
+  onLoad() {
+    const analysis = app.globalData.analysis
+    const tips = []
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+    analysis.tirsHigh.forEach(d => tips.push(tipsMap[d]))
+    tips.push(tipsMap[analysis.rtdrsTop])
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+    this.setData({ tips })
   }
 })

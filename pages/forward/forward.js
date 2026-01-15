@@ -1,12 +1,14 @@
 const app = getApp()
+
 const questions = [
   { dim: 'control', question: '对方是否经常干预你的决定方式？' },
-  { dim: 'devalue', question: '对方是否经常贬低你的感受或观点？' },
+  { dim: 'devalue', question: '对方是否弱化或否定你的感受？' },
   { dim: 'selfish', question: '对方是否主要关注自身需求？' },
-  { dim: 'emotional', question: '对方的情绪是否频繁影响你的状态？' },
-  { dim: 'manipulation', question: '对方是否通过暗示影响你的选择？' },
-  { dim: 'distrust', question: '对方是否经常质疑你的动机？' }
+  { dim: 'emotional', question: '对方情绪是否频繁影响你？' },
+  { dim: 'manipulation', question: '对方是否通过暗示影响你？' },
+  { dim: 'distrust', question: '对方是否经常质疑你？' }
 ]
+
 Page({
   data: {
     index: 0,
@@ -19,13 +21,16 @@ Page({
     ]
   },
   onChange(e) {
-    const q = this.data.current
-    app.globalData.tirsAnswers[q.dim] = Number(e.detail.value)
+    const { dim } = this.data.current
+    app.globalData.tirsAnswers[dim] = Number(e.detail.value)
   },
   next() {
-    const i = this.data.index + 1
-    if (i < questions.length) {
-      this.setData({ index: i, current: questions[i] })
+    const nextIndex = this.data.index + 1
+    if (nextIndex < questions.length) {
+      this.setData({
+        index: nextIndex,
+        current: questions[nextIndex]
+      })
     } else {
       wx.navigateTo({ url: '/pages/reverse/reverse' })
     }

@@ -1,43 +1,14 @@
 {
-  "darkmode": true,
   "pages": [
     "pages/index/index",
     "pages/forward/forward",
     "pages/reverse/reverse",
     "pages/result/result",
-    "pages/tips/tips",
-    "pages/home/home"
+    "pages/tips/tips"
   ],
-  "subpackages": [
-
-  ],
-  "themeLocation": "theme.json",
-  "usingComponents": {
-    "t-demo": "./components/demo-block/index",
-    "t-demo-header": "./components/demo-header/index",
-    "t-button": "tdesign-miniprogram/button/button",
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
-  },
   "window": {
     "navigationBarTitleText": "关系影响评估",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "backgroundTextStyle": "light",
-    "navigationStyle": "custom"
-  },
-  "resolveAlias": {
-    "@behaviors/*": "behaviors/*"
-  },
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents",
-  "rendererOptions": {
-    "skyline": {
-      "disableABTest": true,
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true,
-      "sdkVersionBegin": "3.4.3",
-      "sdkVersionEnd": "15.255.255"
-    }
+    "navigationBarTextStyle": "black"
   }
 }

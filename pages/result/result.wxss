@@ -1,6 +1,13 @@
-page {
-  background-color: var(--td-bg-color-container);
+.container {
+  padding: 24px;
 }
-page .demo-section__wrapper {
-  padding: 0 32rpx;
+.section {
+  margin-bottom: 20px;
+}
+.title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.text {
+  color: #444;
 }

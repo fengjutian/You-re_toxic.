@@ -1,3 +1,5 @@
 <view class="container">
-  <view>根据评估结果，建议关注个人界限、情绪恢复与支持系统建设。</view>
+  <view wx:for="{{tips}}" wx:key="item" class="tip">
+    {{item}}
+  </view>
 </view>
