@@ -14,5 +14,5 @@
     <view>{{analysis.rtdrsTop}}</view>
   </view>
 
-  <button bindtap="goTips">查看自我保护建议</button>
+  <button class="next-btn" bindtap="goTips">查看自我保护建议</button>
 </view>

@@ -1,13 +1,32 @@
 .container {
-  padding: 24px;
+  padding:24px;
+  background-color:#f7f7f7;
+  min-height:100vh;
 }
-.section {
-  margin-bottom: 20px;
+.section{
+  margin-bottom:20px;
+  background:#fff;
+  padding:16px;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
-.title {
-  font-weight: bold;
-  margin-bottom: 8px;
+.title{
+  font-weight:bold;
+  margin-bottom:8px;
+  color:#333;
 }
-.text {
-  color: #444;
+.text{
+  color:#444;
+  font-size:16px;
+}
+.next-btn{
+  width:100%;
+  background-color:#007aff;
+  color:#fff;
+  font-size:16px;
+  padding:12px 0;
+  border-radius:8px;
+}
+.next-btn:active{
+  opacity:0.8;
 }

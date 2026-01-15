@@ -1,9 +1,45 @@
 .container {
   padding: 24px;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+.notice {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+.question-box {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
 }
 .question {
+  font-size: 16px;
+  color: #333;
   margin-bottom: 16px;
 }
 .option {
   margin-bottom: 12px;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #444;
+}
+.radio-label radio {
+  margin-right: 8px;
+}
+.next-btn {
+  width: 100%;
+  background-color: #007aff;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 0;
+  border-radius: 8px;
+}
+.next-btn:active {
+  opacity: 0.8;
 }
