@@ -1,5 +1,12 @@
 <view class="container">
-  <view wx:for="{{tips}}" wx:key="item" class="tip">
-    {{item}}
+  <view class="tips-header">
+    <text>自我保护小技巧</text>
+  </view>
+
+  <view wx:for="{{tips}}" wx:key="index" class="tip-card">
+    <view class="tip-dim">{{tip.dimName}}</view>
+    <view wx:for="{{tip.suggestions}}" wx:key="i" class="tip-item">
+      • {{tip.suggestions[i]}}
+    </view>
   </view>
 </view>

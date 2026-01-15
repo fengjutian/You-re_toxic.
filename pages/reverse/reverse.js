@@ -23,10 +23,14 @@ Page({
   },
 
   onChange(e){
-    this.setData({ selectedValue: e.detail.value })
+    console.log('Selected value:', e.detail.value)
+    this.setData({ selectedValue: e.detail.value }, () => {
+      console.log('selectedValue after setData:', this.data.selectedValue)
+    })
   },
 
   next(){
+    console.log('Checking selectedValue in next():', this.data.selectedValue)
     if(this.data.selectedValue === ''){
       wx.showToast({ title:'请选择一个选项', icon:'none' })
       return
