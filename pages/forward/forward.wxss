@@ -3,11 +3,6 @@
   background-color: #f7f7f7;
   min-height: 100vh;
 }
-.notice {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 24px;
-}
 .question-box {
   background-color: #fff;
   padding: 16px;

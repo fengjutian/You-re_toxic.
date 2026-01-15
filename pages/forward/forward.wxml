@@ -1,8 +1,4 @@
 <view class="container">
-  <view class="notice">
-    本测评为非诊断性工具，仅用于理解关系中的行为模式与影响。
-  </view>
-
   <view class="question-box">
     <view class="question">{{current.question}}</view>
 
