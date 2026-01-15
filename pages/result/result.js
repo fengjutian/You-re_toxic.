@@ -25,17 +25,34 @@ Page({
     }
   },
   onLoad(){
+    // Debug the incoming data
+    console.log('Global Data:', app.globalData);
+    console.log('TIRS Answers:', app.globalData.tirsAnswers);
+    console.log('RTDRS Answers:', app.globalData.rtdrsAnswers);
     const tirs = app.globalData.tirsAnswers || {}
     const rtdrs = app.globalData.rtdrsAnswers || {}
 
     // 正向维度加权平均
-    const tirsHigh = Object.keys(tirs).filter(dim => {
-      const arr = tirs[dim] || []
-      if (arr.length === 0) return false
+    console.log('Processing TIRS Answers:', tirs);
+    const tirsHigh = [];
+    
+    Object.keys(tirs).forEach(dim => {
+      const arr = tirs[dim] || [];
+      console.log(`Dimension ${dim}: Answers = [${arr.join(', ')}]`);
       
-      const avg = arr.reduce((a,b)=>a+b,0)/arr.length
-      return avg >= 2
-    }).map(dim => dimNames[dim] || dim)  // 使用友好的维度名称
+      if (arr.length === 0) return;
+      
+      const avg = arr.reduce((a,b)=>a+b,0)/arr.length;
+      console.log(`Dimension ${dim}: Average = ${avg}`);
+      
+      if (avg >= 2) {
+        const dimName = dimNames[dim] || dim;
+        console.log(`Adding high-risk dimension: ${dimName}`);
+        tirsHigh.push(dimName);
+      }
+    });
+    
+    console.log('Final tirsHigh:', tirsHigh);
 
     // 反向维度最高
     let rtdrsTop = ''
@@ -60,7 +77,10 @@ Page({
       status = '关系中存在潜在风险信号'
     }
 
-    const analysis = { status, tirsHigh, rtdrsTop }
+    // Add fallback for tirsHigh if empty
+    const safeTirsHigh = tirsHigh.length > 0 ? tirsHigh : ['未发现明显高风险维度'];
+    
+    const analysis = { status, tirsHigh: safeTirsHigh, rtdrsTop }
     app.globalData.analysis = analysis
     this.setData({ analysis })
   },
