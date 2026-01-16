@@ -294,5 +294,15 @@ Page({
     
     console.log('Final tips:', safeTips);
     this.setData({ tips: safeTips })
+  },
+  
+  /**
+   * Navigate back to the index page
+   * Triggered by clicking the floating button
+   */
+  goToIndex() {
+    wx.navigateTo({
+      url: '/pages/index/index'
+    })
   }
 })

@@ -11,4 +11,9 @@
       </view>
     </view>
   </view>
+  
+  <!-- Floating back to index button -->
+  <button class="float-button" type="primary" bindtap="goToIndex">
+    返回首页
+  </button>
 </view>
