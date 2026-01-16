@@ -6,4 +6,8 @@
     <view class="btn" bindtap="goForward">他人行为风险评估</view>
     <view class="btn" bindtap="goReverse">自我消耗风险评估</view>
   </view>
+  
+  <view class="clear-btn-container">
+    <view class="clear-btn" bindtap="clearData">清除评估数据</view>
+  </view>
 </view>
