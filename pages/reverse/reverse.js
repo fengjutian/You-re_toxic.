@@ -75,7 +75,18 @@ Page({
         selectedValue:''
       })
     }else{
-      wx.navigateTo({ url:'/pages/result/result' })
+      // Show a toast notification to inform the user about the transition
+      wx.showToast({
+        title: '评估完成，正在生成结果',
+        icon: 'success',
+        duration: 1500,
+        success: () => {
+          // Navigate to the result page after a short delay to ensure the user sees the toast
+          setTimeout(() => {
+            wx.navigateTo({ url: '/pages/result/result' });
+          }, 1200);
+        }
+      });
     }
   }
 })

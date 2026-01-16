@@ -68,7 +68,18 @@ Page({
         selectedValue: ''
       })
     } else {
-      wx.navigateTo({ url: '/pages/reverse/reverse' })
+      // Show a toast notification to inform the user about the transition
+      wx.showToast({
+        title: '即将开始自我消耗风险评估',
+        icon: 'info',
+        duration: 1500,
+        success: () => {
+          // Navigate to the reverse page after a short delay to ensure the user sees the toast
+          setTimeout(() => {
+            wx.navigateTo({ url: '/pages/reverse/reverse' });
+          }, 1200);
+        }
+      });
     }
   }
 })
