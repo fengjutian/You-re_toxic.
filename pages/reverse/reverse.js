@@ -51,7 +51,7 @@ Page({
     this.setData({ selectedValue: e.detail.value })
   },
 
-  next(){
+  next() {
     if(this.data.selectedValue === ''){
       wx.showToast({ title:'请选择一个选项', icon:'none' })
       return

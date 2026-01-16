@@ -39,15 +39,13 @@ Page({
   },
 
   next() {
-    this.data.selectedValue = ''
-    
-    // if (this.data.selectedValue === '') {
-    //   wx.showToast({
-    //     title: '请选择一个选项',
-    //     icon: 'none'
-    //   })
-    //   return
-    // }
+    if (this.data.selectedValue === '') {
+      wx.showToast({
+        title: '请选择一个选项',
+        icon: 'none'
+      })
+      return
+    }
 
     const { current, selectedValue } = this.data
     const { dim } = current
@@ -58,6 +56,9 @@ Page({
     app.globalData.tirsAnswers[dim].push(Number(selectedValue))
 
     const nextIndex = this.data.index + 1
+
+    console.log(`Selected value for`, nextIndex, questions.length)
+
     if (nextIndex < questions.length) {
       this.setData({
         index: nextIndex,
