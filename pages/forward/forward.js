@@ -39,13 +39,15 @@ Page({
   },
 
   next() {
-    if (this.data.selectedValue === '') {
-      wx.showToast({
-        title: '请选择一个选项',
-        icon: 'none'
-      })
-      return
-    }
+    this.data.selectedValue = ''
+    
+    // if (this.data.selectedValue === '') {
+    //   wx.showToast({
+    //     title: '请选择一个选项',
+    //     icon: 'none'
+    //   })
+    //   return
+    // }
 
     const { current, selectedValue } = this.data
     const { dim } = current
