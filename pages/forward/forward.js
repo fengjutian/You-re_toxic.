@@ -55,6 +55,8 @@ Page({
     }
     app.globalData.tirsAnswers[dim].push(Number(selectedValue))
 
+    console.log(`Selected value for`, app.globalData)
+
     const nextIndex = this.data.index + 1
 
     console.log(`Selected value for`, nextIndex, questions.length)

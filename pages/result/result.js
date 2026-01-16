@@ -25,15 +25,10 @@ Page({
     }
   },
   onLoad(){
-    // Debug the incoming data
-    console.log('Global Data:', app.globalData);
-    console.log('TIRS Answers:', app.globalData.tirsAnswers);
-    console.log('RTDRS Answers:', app.globalData.rtdrsAnswers);
     const tirs = app.globalData.tirsAnswers || {}
     const rtdrs = app.globalData.rtdrsAnswers || {}
 
     // 正向维度加权平均
-    console.log('Processing TIRS Answers:', tirs);
     const tirsHigh = [];
     
     Object.keys(tirs).forEach(dim => {

@@ -65,6 +65,8 @@ Page({
     }
     app.globalData.rtdrsAnswers[dim].push(Number(selectedValue))
 
+    console.log(`Selected value for`, app.globalData)
+
     const nextIndex = this.data.index + 1
     if(nextIndex < questions.length){
       this.setData({
