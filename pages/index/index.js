@@ -8,6 +8,12 @@ Page({
       imageUrl: '/assets/share.png'
     }
   },
+  onShareTimeline() {
+    return {
+      title: '你有毒啊 小程序',
+      imageUrl: '/assets/share.png'
+    }
+  },
   goForward() {
     wx.navigateTo({ url: '/pages/forward/forward' })
   },
