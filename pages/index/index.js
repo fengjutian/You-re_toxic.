@@ -1,6 +1,19 @@
 const app = getApp()
 
 Page({
+  onShareAppMessage() {
+    return {
+      title: '你有毒啊 小程序',
+      path: '/pages/index/index',
+      imageUrl: '/assets/share.png'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '你有毒啊 小程序',
+      imageUrl: '/assets/share.png'
+    }
+  },
   goForward() {
     wx.navigateTo({ url: '/pages/forward/forward' })
   },

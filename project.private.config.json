@@ -1,6 +1,6 @@
 {
   "libVersion": "3.13.2",
-  "projectname": "%E4%BD%A0%E6%9C%89%E6%AF%92%E5%95%8A",
+  "projectname": "You-re_toxic",
   "setting": {
     "urlCheck": false,
     "coverView": true,
@@ -19,5 +19,6 @@
     "checkInvalidKey": true,
     "useIsolateContext": true,
     "ignoreDevUnusedFiles": true
-  }
+  },
+  "condition": {}
 }
