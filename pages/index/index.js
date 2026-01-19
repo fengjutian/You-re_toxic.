@@ -41,6 +41,10 @@ Page({
   goToMBTI() {
     wx.navigateTo({ url: '/pages/mbti/mbti' })
   },
+
+  goToBigFive() {
+    wx.navigateTo({ url: '/pages/bigfive/bigfive' })
+  },
   
   /**
    * 清除所有评估数据

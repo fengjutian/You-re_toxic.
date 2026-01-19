@@ -24,7 +24,7 @@
           <view class="test-desc">四个维度16种人格类型</view>
           <view class="test-applicable">职业规划、团队沟通</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToBigFive">
           <view class="test-name">大五人格（Big Five / OCEAN）</view>
           <view class="test-desc">外向、责任心、宜人性、神经质、开放性</view>
           <view class="test-applicable">科学研究、心理咨询、人格评估</view>

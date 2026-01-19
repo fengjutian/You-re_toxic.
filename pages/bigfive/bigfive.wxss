@@ -1,0 +1,180 @@
+.container {
+  padding: 24rpx;
+}
+
+.dimensions {
+  background: #E8E8FF;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.dim-title {
+  font-weight: 700;
+  font-size: 30rpx;
+  margin-bottom: 12rpx;
+  color: #6A5ACD;
+}
+
+.dim-item {
+  font-size: 26rpx;
+  margin-bottom: 6rpx;
+  color: #333;
+}
+
+.notice {
+  background: #FFF8DC;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+  font-size: 26rpx;
+}
+
+.card {
+  background: #FFFFFF;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.question {
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.option {
+  display: block;
+  margin: 10rpx 0;
+}
+
+.submit {
+  margin: 30rpx 0;
+  background-color: #6A5ACD;
+  color: #FFFFFF;
+}
+
+.result {
+  background: #FFFFFF;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+
+.result-card {
+  background: #FFFFFF;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(106, 90, 205, 0.08);
+}
+
+.result-header {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.result-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+.dimensions-list {
+  margin-bottom: 24rpx;
+}
+
+.dimension-item {
+  margin-bottom: 32rpx;
+  padding: 24rpx;
+  background: #F8FAFF;
+  border-radius: 12rpx;
+}
+
+.dim-info {
+  margin-bottom: 16rpx;
+}
+
+.dim-name {
+  font-size: 28rpx;
+  color: #6A5ACD;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.dim-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.dim-score-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.dim-score-value {
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #6A5ACD;
+}
+
+.dim-score-range {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.dim-percentage {
+  font-size: 28rpx;
+  color: #6A5ACD;
+  font-weight: 600;
+}
+
+.dim-progress-bar {
+  width: 100%;
+  height: 16rpx;
+  background: #E8E8FF;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.dim-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6A5ACD 0%, #7B68EE 100%);
+  border-radius: 8rpx;
+  transition: width 0.3s ease;
+}
+
+.note-card {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #FFFBE6 0%, #FFF7CC 100%);
+  border-radius: 12rpx;
+  border: 2rpx solid #FFE58F;
+  display: flex;
+  align-items: flex-start;
+}
+
+.note-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.note-text {
+  flex: 1;
+}
+
+.note-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #D48806;
+  margin-bottom: 8rpx;
+}
+
+.note-message {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
