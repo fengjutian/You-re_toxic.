@@ -3,14 +3,14 @@ const app = getApp()
 Page({
   onShareAppMessage() {
     return {
-      title: '你有毒啊 小程序',
+      title: '心理测试 小程序',
       path: '/pages/index/index',
       imageUrl: '/assets/share.png'
     }
   },
   onShareTimeline() {
     return {
-      title: '你有毒啊 小程序',
+      title: '心理测试 小程序',
       imageUrl: '/assets/share.png'
     }
   },
@@ -20,6 +20,10 @@ Page({
   
   goReverse() {
     wx.navigateTo({ url: '/pages/reverse/reverse' })
+  },
+
+  goToGAD7() {
+    wx.navigateTo({ url: '/pages/gad7/gad7' })
   },
   
   /**

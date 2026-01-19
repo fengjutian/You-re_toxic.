@@ -84,7 +84,7 @@
           <view class="test-desc">评估抑郁症状程度</view>
           <view class="test-applicable">临床、心理咨询</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToGAD7">
           <view class="test-name">焦虑量表（GAD-7）</view>
           <view class="test-desc">评估广泛性焦虑症状</view>
           <view class="test-applicable">心理健康监测</view>

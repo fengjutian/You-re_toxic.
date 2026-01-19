@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="notice">
+    以下问题基于<strong>过去两周</strong>的感受填写，本量表用于心理筛查，不作为医学诊断。
+  </view>
+
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">
+        {{index + 1}}. {{item}}
+      </view>
+
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" />
+          {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <!-- 功能损害补充题 -->
+  <view class="card">
+    <view class="question">
+      这些问题在工作、学习或人际关系中对你造成多大困难？
+    </view>
+    <radio-group bindchange="onImpactSelect">
+      <label wx:for="{{impactOptions}}" wx:key="value" class="option">
+        <radio value="{{item}}" /> {{item}}
+      </label>
+    </radio-group>
+  </view>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <view wx:if="{{result}}" class="result">
+    <view class="score">总分：{{result.score}}</view>
+    <view class="level">{{result.level}}</view>
+    <view class="desc">{{result.desc}}</view>
+    <view class="tip">{{result.tip}}</view>
+  </view>
+</view>
