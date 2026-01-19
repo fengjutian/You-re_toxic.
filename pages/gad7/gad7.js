@@ -49,35 +49,47 @@ Page({
   },
 
   getResult(score) {
+    let level, desc, tip, levelClass, clinicalInfo;
+
     if (score <= 4) {
-      return {
-        score,
-        level: '无或极轻度焦虑',
-        desc: '结果处于正常范围。',
-        tip: '保持良好作息与压力管理。'
-      }
+      level = '无/极轻度';
+      desc = '结果处于正常范围';
+      tip = '保持良好作息与压力管理';
+      levelClass = 'level-normal';
+      clinicalInfo = null;
+    } else if (score <= 9) {
+      level = '轻度焦虑';
+      desc = '存在一定焦虑症状';
+      tip = '建议关注压力来源并进行自我调节';
+      levelClass = 'level-mild';
+      clinicalInfo = null;
+    } else if (score <= 14) {
+      level = '中度焦虑';
+      desc = '焦虑症状已较明显';
+      tip = '建议进一步评估或心理干预';
+      levelClass = 'level-moderate';
+      clinicalInfo = {
+        isClinical: true,
+        note: '≥10分为广泛性焦虑障碍（GAD）筛查推荐切点'
+      };
+    } else {
+      level = '重度焦虑';
+      desc = '焦虑程度较高';
+      tip = '高度建议专业心理/精神科评估';
+      levelClass = 'level-severe';
+      clinicalInfo = {
+        isClinical: true,
+        note: '≥10分为广泛性焦虑障碍（GAD）筛查推荐切点'
+      };
     }
-    if (score <= 9) {
-      return {
-        score,
-        level: '轻度焦虑',
-        desc: '存在一定焦虑症状。',
-        tip: '建议关注压力来源并进行自我调节。'
-      }
-    }
-    if (score <= 14) {
-      return {
-        score,
-        level: '中度焦虑',
-        desc: '焦虑症状已较明显。',
-        tip: '建议进行专业心理评估或咨询。'
-      }
-    }
+
     return {
       score,
-      level: '重度焦虑',
-      desc: '焦虑程度较高。',
-      tip: '强烈建议尽快联系心理咨询师或精神科医生。'
-    }
+      level,
+      desc,
+      tip,
+      levelClass,
+      clinicalInfo
+    };
   }
 })

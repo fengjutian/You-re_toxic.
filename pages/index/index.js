@@ -25,6 +25,10 @@ Page({
   goToGAD7() {
     wx.navigateTo({ url: '/pages/gad7/gad7' })
   },
+
+  goToPHQ9() {
+    wx.navigateTo({ url: '/pages/phq9/phq9' })
+  },
   
   /**
    * 清除所有评估数据

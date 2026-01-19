@@ -1,6 +1,7 @@
 <view class="container">
   <view class="notice">
-    以下问题基于<strong>过去两周</strong>的感受填写，本量表用于心理筛查，不作为医学诊断。
+    请根据<strong>过去两周</strong>的实际感受填写。
+    本量表仅用于心理筛查，不作为医学诊断。
   </view>
 
   <block wx:for="{{questions}}" wx:key="index">
@@ -21,7 +22,7 @@
   <!-- 功能损害补充题 -->
   <view class="card">
     <view class="question">
-      这些问题在工作、学习或人际关系中对你造成多大困难？
+      这些问题在工作、学习或人际交往中对你造成多大困难？
     </view>
     <radio-group bindchange="onImpactSelect">
       <label wx:for="{{impactOptions}}" wx:key="value" class="option">
@@ -40,11 +41,11 @@
     <view class="score-section">
       <view class="score-label">总分</view>
       <view class="score-value">{{result.score}}</view>
-      <view class="score-max">/ 21</view>
+      <view class="score-max">/ 27</view>
     </view>
 
     <view class="level-section">
-      <view class="level-label">焦虑程度</view>
+      <view class="level-label">抑郁程度</view>
       <view class="level-text {{result.levelClass}}">{{result.level}}</view>
     </view>
 
@@ -61,9 +62,17 @@
     <view wx:if="{{result.clinicalInfo}}" class="clinical-note">
       <view class="clinical-icon">📊</view>
       <view class="clinical-text">
-        <view class="clinical-title">临床阈值说明</view>
+        <view class="clinical-title">临床筛查阈值</view>
         <view class="clinical-detail">{{result.clinicalInfo.note}}</view>
-        <view class="clinical-stat">灵敏度约 89%，特异度约 82%</view>
+        <view class="clinical-stat">灵敏度、特异度均约 88%</view>
+      </view>
+    </view>
+
+    <view wx:if="{{result.alert}}" class="alert-card">
+      <view class="alert-icon">🚨</view>
+      <view class="alert-text">
+        <view class="alert-title">重要提示</view>
+        <view class="alert-message">{{result.alert}}</view>
       </view>
     </view>
   </view>

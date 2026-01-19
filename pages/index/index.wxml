@@ -79,7 +79,7 @@
         <view class="category-title">情绪与心理健康测试</view>
       </view>
       <view class="tests-grid">
-        <view class="test-card">
+        <view class="test-card" bindtap="goToPHQ9">
           <view class="test-name">抑郁量表（PHQ-9）</view>
           <view class="test-desc">评估抑郁症状程度</view>
           <view class="test-applicable">临床、心理咨询</view>

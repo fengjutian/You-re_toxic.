@@ -6,7 +6,8 @@
     "pages/reverse/reverse",
     "pages/result/result",
     "pages/tips/tips",
-    "pages/gad7/gad7"
+    "pages/gad7/gad7",
+    "pages/phq9/phq9"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",
