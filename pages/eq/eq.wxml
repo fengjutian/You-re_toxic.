@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="notice">
+    请根据你平时的真实情况填写，每题选择最符合的一项。
+    本量表用于自我评估，不作为医学诊断。
+  </view>
+
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">
+        {{index + 1}}. {{item.text}}
+      </view>
+
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="score-section">
+      <view class="score-label">总分</view>
+      <view class="score-value">{{result.totalScore}}</view>
+      <view class="score-max">/ 100</view>
+    </view>
+
+    <view class="level-section">
+      <view class="level-label">EQ 水平</view>
+      <view class="level-text {{result.levelClass}}">{{result.level}}</view>
+    </view>
+
+    <view class="desc-section">
+      <view class="section-title">解读</view>
+      <view class="desc-text">{{result.desc}}</view>
+    </view>
+
+    <view class="tip-section">
+      <view class="tip-label">💡 建议</view>
+      <view class="tip-text">{{result.tip}}</view>
+    </view>
+
+    <view wx:if="{{result.detail}}" class="detail-section">
+      <view class="detail-title">分项得分</view>
+      <view class="detail-grid">
+        <view class="detail-item">
+          <view class="detail-label">情绪感知</view>
+          <view class="detail-value">{{result.detail.perception}} / 20</view>
+        </view>
+        <view class="detail-item">
+          <view class="detail-label">情绪理解</view>
+          <view class="detail-value">{{result.detail.understanding}} / 20</view>
+        </view>
+        <view class="detail-item">
+          <view class="detail-label">情绪调节</view>
+          <view class="detail-value">{{result.detail.regulation}} / 20</view>
+        </view>
+        <view class="detail-item">
+          <view class="detail-label">情绪运用</view>
+          <view class="detail-value">{{result.detail.utilization}} / 20</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">⚠️</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">{{result.note}}</view>
+      </view>
+    </view>
+  </view>
+</view>

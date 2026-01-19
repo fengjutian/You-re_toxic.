@@ -94,7 +94,7 @@
           <view class="test-desc">评估生活压力水平</view>
           <view class="test-applicable">心理健康、职业压力管理</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToEQ">
           <view class="test-name">情绪智力量表（EQ）</view>
           <view class="test-desc">测量自我情绪管理和社交能力</view>
           <view class="test-applicable">职业发展、团队合作</view>

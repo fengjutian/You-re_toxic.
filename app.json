@@ -8,7 +8,8 @@
     "pages/tips/tips",
     "pages/gad7/gad7",
     "pages/phq9/phq9",
-    "pages/pss14/pss14"
+    "pages/pss14/pss14",
+    "pages/eq/eq"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",
