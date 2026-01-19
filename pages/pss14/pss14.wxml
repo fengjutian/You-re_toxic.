@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="notice">
+    请根据<strong>过去一个月</strong>的实际感受填写。
+    本量表用于压力感知评估，不作为医学诊断。
+  </view>
+
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">
+        {{index + 1}}. {{item.text}}
+      </view>
+
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" />
+          {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="score-section">
+      <view class="score-label">总分</view>
+      <view class="score-value">{{result.score}}</view>
+      <view class="score-max">/ 56</view>
+    </view>
+
+    <view class="level-section">
+      <view class="level-label">压力水平</view>
+      <view class="level-text {{result.levelClass}}">{{result.level}}</view>
+    </view>
+
+    <view class="desc-section">
+      <view class="section-title">解读</view>
+      <view class="desc-text">{{result.desc}}</view>
+    </view>
+
+    <view class="tip-section">
+      <view class="tip-label">💡 建议</view>
+      <view class="tip-text">{{result.tip}}</view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">⚠️</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">{{result.note}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -89,7 +89,7 @@
           <view class="test-desc">评估广泛性焦虑症状</view>
           <view class="test-applicable">心理健康监测</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToPSS14">
           <view class="test-name">压力量表（PSS）</view>
           <view class="test-desc">评估生活压力水平</view>
           <view class="test-applicable">心理健康、职业压力管理</view>

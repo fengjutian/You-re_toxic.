@@ -29,6 +29,10 @@ Page({
   goToPHQ9() {
     wx.navigateTo({ url: '/pages/phq9/phq9' })
   },
+
+  goToPSS14() {
+    wx.navigateTo({ url: '/pages/pss14/pss14' })
+  },
   
   /**
    * 清除所有评估数据
