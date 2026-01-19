@@ -1,13 +1,169 @@
 <view class="container">
+  <!-- Header Section -->
+  <view class="header">
+    <view class="title">心理测评工具</view>
+    <view class="subtitle">探索自我，理解他人</view>
+  </view>
+
+  <!-- Notice Section -->
   <view class="notice">
-    本工具为非诊断性心理测评，仅用于理解关系中的行为模式与可能影响。
+    本工具为非诊断性心理测评，仅用于自我认知和参考。
   </view>
-  <view class="btn-container">
-    <view class="btn" bindtap="goForward">他人行为风险评估</view>
-    <view class="btn" bindtap="goReverse">自我消耗风险评估</view>
+
+  <!-- Test Categories Section -->
+  <view class="categories">
+    <!-- Category 1: Personality & Character Tests -->
+    <view class="category">
+      <view class="category-header">
+        <view class="category-number">1️⃣</view>
+        <view class="category-title">人格与性格测试</view>
+      </view>
+      <view class="tests-grid">
+        <view class="test-card">
+          <view class="test-name">MBTI（Myers–Briggs）</view>
+          <view class="test-desc">四个维度16种人格类型</view>
+          <view class="test-applicable">职业规划、团队沟通</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">大五人格（Big Five / OCEAN）</view>
+          <view class="test-desc">外向、责任心、宜人性、神经质、开放性</view>
+          <view class="test-applicable">科学研究、心理咨询、人格评估</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">DISC</view>
+          <view class="test-desc">支配型(D)、影响型(I)、稳定型(S)、谨慎型(C)</view>
+          <view class="test-applicable">销售、管理、团队建设</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">霍兰德职业兴趣测试（RIASEC）</view>
+          <view class="test-desc">6类兴趣类型：现实型、研究型、艺术型、社会型、企业型、常规型</view>
+          <view class="test-applicable">职业规划、求职</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">16PF（16 Personality Factors）</view>
+          <view class="test-desc">16个人格维度</view>
+          <view class="test-applicable">人力资源、职业发展</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Category 2: Intelligence & Ability Tests -->
+    <view class="category">
+      <view class="category-header">
+        <view class="category-number">2️⃣</view>
+        <view class="category-title">智力与能力测试</view>
+      </view>
+      <view class="tests-grid">
+        <view class="test-card">
+          <view class="test-name">WAIS / WISC（韦氏智力量表）</view>
+          <view class="test-desc">成人/儿童智商测试</view>
+          <view class="test-applicable">教育评估、心理咨询</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">Raven’s Progressive Matrices（瑞文测验）</view>
+          <view class="test-desc">非语言智力测试，抽象推理</view>
+          <view class="test-applicable">学术研究、招聘测评</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">多元智力测试（Gardner）</view>
+          <view class="test-desc">语言、逻辑、空间、音乐、肢体、社交、内省等</view>
+          <view class="test-applicable">教育、学习风格分析</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Category 3: Emotion & Mental Health Tests -->
+    <view class="category">
+      <view class="category-header">
+        <view class="category-number">3️⃣</view>
+        <view class="category-title">情绪与心理健康测试</view>
+      </view>
+      <view class="tests-grid">
+        <view class="test-card">
+          <view class="test-name">抑郁量表（PHQ-9）</view>
+          <view class="test-desc">评估抑郁症状程度</view>
+          <view class="test-applicable">临床、心理咨询</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">焦虑量表（GAD-7）</view>
+          <view class="test-desc">评估广泛性焦虑症状</view>
+          <view class="test-applicable">心理健康监测</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">压力量表（PSS）</view>
+          <view class="test-desc">评估生活压力水平</view>
+          <view class="test-applicable">心理健康、职业压力管理</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">情绪智力量表（EQ）</view>
+          <view class="test-desc">测量自我情绪管理和社交能力</view>
+          <view class="test-applicable">职业发展、团队合作</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Category 4: Career & Interest Tests -->
+    <view class="category">
+      <view class="category-header">
+        <view class="category-number">4️⃣</view>
+        <view class="category-title">职业与兴趣测试</view>
+      </view>
+      <view class="tests-grid">
+        <view class="test-card">
+          <view class="test-name">霍兰德职业兴趣（RIASEC）</view>
+          <view class="test-desc">六种兴趣类型</view>
+          <view class="test-applicable">职业指导</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">职业性格倾向测评（如职业锚）</view>
+          <view class="test-desc">评估工作动机和职业偏好</view>
+          <view class="test-applicable">职业规划、岗位匹配</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">价值观与动机测试</view>
+          <view class="test-desc">测量工作价值观和激励因素</view>
+          <view class="test-applicable">HR、管理</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Category 5: Other Psychological Tests -->
+    <view class="category">
+      <view class="category-header">
+        <view class="category-number">5️⃣</view>
+        <view class="category-title">其他心理测评</view>
+      </view>
+      <view class="tests-grid">
+        <view class="test-card">
+          <view class="test-name">人格障碍自测（如PDQ-4+）</view>
+          <view class="test-desc">用于初步筛查人格特质异常</view>
+          <view class="test-applicable">自我认知参考</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">儿童心理发展量表</view>
+          <view class="test-desc">智力、情绪、社交发展评估</view>
+          <view class="test-applicable">教育、心理咨询</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">恋爱/情感心理测试</view>
+          <view class="test-desc">爱情风格、依恋类型（安全型、回避型、焦虑型）</view>
+          <view class="test-applicable">情感关系探索</view>
+        </view>
+        <view class="test-card">
+          <view class="test-name">睡眠与生活习惯测试</view>
+          <view class="test-desc">评估睡眠质量和压力负荷</view>
+          <view class="test-applicable">健康管理</view>
+        </view>
+      </view>
+    </view>
   </view>
-  
-  <view class="clear-btn-container">
-    <view class="clear-btn" bindtap="clearData">清除评估数据</view>
+
+  <!-- Footer Section -->
+  <view class="footer">
+    <view class="action-buttons">
+      <view class="btn" bindtap="goForward">他人行为风险评估</view>
+      <view class="btn" bindtap="goReverse">自我消耗风险评估</view>
+      <view class="clear-btn" bindtap="clearData">清除评估数据</view>
+    </view>
   </view>
 </view>
