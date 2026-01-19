@@ -1,0 +1,91 @@
+<view class="container">
+  <!-- MBTI 维度说明 -->
+  <view class="mbti-dimensions">
+    <view class="dim-title">MBTI 四个维度</view>
+    <view class="dim-item"><text>外向 E / 内向 I：</text>你从外界获得能量或从内在获得能量</view>
+    <view class="dim-item"><text>感觉 S / 直觉 N：</text>你更关注现实具体信息或未来可能性</view>
+    <view class="dim-item"><text>思考 T / 情感 F：</text>你做决定更依赖逻辑/事实还是情感/他人感受</view>
+    <view class="dim-item"><text>判断 J / 知觉 P：</text>你倾向于计划、有条理还是灵活、随性</view>
+  </view>
+
+  <!-- 提示 -->
+  <view class="notice">
+    请根据你平时的真实偏好选择最符合自己的选项。
+    本量表用于性格倾向评估，不作为心理诊断。
+  </view>
+
+  <!-- 问题列表 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <!-- 提交按钮 -->
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 测评结果 -->
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="type-section">
+      <view class="type-label">你的 MBTI 类型</view>
+      <view class="type-value">{{result.type}}</view>
+      <view class="type-desc">{{result.desc}}</view>
+    </view>
+
+    <view class="dimensions-section">
+      <view class="dimensions-title">四维度得分</view>
+      <view class="dimension-item">
+        <view class="dimension-bar">
+          <view class="bar-left" style="width: {{result.dims.EI.I * 5}}%">I</view>
+          <view class="bar-label">{{result.dims.EI.label}}</view>
+          <view class="bar-right" style="width: {{result.dims.EI.E * 5}}%">E</view>
+        </view>
+        <view class="dimension-scores">I: {{result.dims.EI.I}} | E: {{result.dims.EI.E}}</view>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-bar">
+          <view class="bar-left" style="width: {{result.dims.SN.N * 5}}%">N</view>
+          <view class="bar-label">{{result.dims.SN.label}}</view>
+          <view class="bar-right" style="width: {{result.dims.SN.S * 5}}%">S</view>
+        </view>
+        <view class="dimension-scores">N: {{result.dims.SN.N}} | S: {{result.dims.SN.S}}</view>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-bar">
+          <view class="bar-left" style="width: {{result.dims.TF.F * 5}}%">F</view>
+          <view class="bar-label">{{result.dims.TF.label}}</view>
+          <view class="bar-right" style="width: {{result.dims.TF.T * 5}}%">T</view>
+        </view>
+        <view class="dimension-scores">F: {{result.dims.TF.F}} | T: {{result.dims.TF.T}}</view>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-bar">
+          <view class="bar-left" style="width: {{result.dims.JP.P * 5}}%">P</view>
+          <view class="bar-label">{{result.dims.JP.label}}</view>
+          <view class="bar-right" style="width: {{result.dims.JP.J * 5}}%">J</view>
+        </view>
+        <view class="dimension-scores">P: {{result.dims.JP.P}} | J: {{result.dims.JP.J}}</view>
+      </view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">💡</view>
+      <view class="note-text">
+        <view class="note-message">{{result.note}}</view>
+      </view>
+    </view>
+  </view>
+</view>

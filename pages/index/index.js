@@ -37,6 +37,10 @@ Page({
   goToEQ() {
     wx.navigateTo({ url: '/pages/eq/eq' })
   },
+
+  goToMBTI() {
+    wx.navigateTo({ url: '/pages/mbti/mbti' })
+  },
   
   /**
    * 清除所有评估数据

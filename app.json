@@ -9,7 +9,8 @@
     "pages/gad7/gad7",
     "pages/phq9/phq9",
     "pages/pss14/pss14",
-    "pages/eq/eq"
+    "pages/eq/eq",
+    "pages/mbti/mbti"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",

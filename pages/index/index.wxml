@@ -19,7 +19,7 @@
         <view class="category-title">人格与性格测试</view>
       </view>
       <view class="tests-grid">
-        <view class="test-card">
+        <view class="test-card" bindtap="goToMBTI">
           <view class="test-name">MBTI（Myers–Briggs）</view>
           <view class="test-desc">四个维度16种人格类型</view>
           <view class="test-applicable">职业规划、团队沟通</view>

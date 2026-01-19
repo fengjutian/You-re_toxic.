@@ -1,0 +1,204 @@
+.container {
+  padding: 24rpx;
+}
+
+.notice {
+  background: #E8E8FF;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+  font-size: 26rpx;
+}
+
+.card {
+  background: #FFFFFF;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.question {
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.option {
+  display: block;
+  margin: 10rpx 0;
+}
+
+.submit {
+  margin: 30rpx 0;
+  background-color: #6A5ACD;
+  color: #FFFFFF;
+}
+
+.result {
+  background: #FFFFFF;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+
+.result-card {
+  background: #FFFFFF;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(106, 90, 205, 0.08);
+}
+
+.result-header {
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.result-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+.type-section {
+  margin: 30rpx 0;
+  text-align: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #E8E8FF 0%, #F0F0FF 100%);
+  border-radius: 16rpx;
+}
+
+.type-label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.type-value {
+  font-size: 56rpx;
+  font-weight: 800;
+  color: #6A5ACD;
+  margin-bottom: 16rpx;
+  letter-spacing: 8rpx;
+}
+
+.type-desc {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.dimensions-section {
+  margin: 24rpx 0;
+}
+
+.dimensions-title {
+  font-size: 28rpx;
+  color: #6A5ACD;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.dimension-item {
+  margin-bottom: 24rpx;
+}
+
+.dimension-bar {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  background: #F5F5F5;
+  border-radius: 30rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #B8B8FF 0%, #A8A8FF 100%);
+  height: 100%;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: 600;
+  transition: width 0.3s ease;
+}
+
+.bar-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #6A5ACD 0%, #7B68EE 100%);
+  height: 100%;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: 600;
+  transition: width 0.3s ease;
+}
+
+.bar-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22rpx;
+  color: #666;
+  background: #FFFFFF;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  white-space: nowrap;
+}
+
+.dimension-scores {
+  text-align: center;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.note-card {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #FFFBE6 0%, #FFF7CC 100%);
+  border-radius: 12rpx;
+  border: 2rpx solid #FFE58F;
+  display: flex;
+  align-items: flex-start;
+}
+
+.note-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.note-text {
+  flex: 1;
+}
+
+.note-message {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* MBTI 维度说明样式 */
+.mbti-dimensions {
+  background: #E8E8FF;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.dim-title {
+  font-weight: 700;
+  font-size: 30rpx;
+  margin-bottom: 12rpx;
+  color: #6A5ACD;
+}
+
+.dim-item {
+  font-size: 26rpx;
+  margin-bottom: 6rpx;
+  color: #333;
+}
+
