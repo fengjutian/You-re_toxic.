@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/relationship/relationship",
     "pages/forward/forward",
     "pages/reverse/reverse",
     "pages/result/result",
