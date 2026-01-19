@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>增强版 MBTI 自动化测试</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; line-height: 1.6; }
+  h1 { text-align: center; }
+  .question { margin-bottom: 15px; }
+  .options label { display: block; margin-top: 5px; }
+  #submitBtn { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+  #result { margin-top: 30px; padding: 20px; border: 1px solid #ccc; background: #f9f9f9; }
+</style>
+</head>
+<body>
+
+<h1>增强版 MBTI 自动化测试</h1>
+<p>请根据你的日常行为和偏好选择最符合你的选项，每题可选 A/B 或 C（中性）。</p>
+
+<form id="mbtiForm"></form>
+
+<button type="button" id="submitBtn">提交测试</button>
+
+<div id="result"></div>
+
+<script>
+// ---- 题库 ----
+const questions = [
+  {q:"周末你更喜欢：", A:{text:"独自休息、阅读或宅在家", val:"I"}, B:{text:"和朋友聚会、参加活动", val:"E"}, C:{text:"无特别偏好", val:"N"}},
+  {q:"社交场合中你：", A:{text:"倾向先观察，等熟悉后再交谈", val:"I"}, B:{text:"主动与陌生人交谈", val:"E"}, C:{text:"视情况而定", val:"N"}},
+  {q:"完成工作后，你会：", A:{text:"自己默默欣赏成果", val:"I"}, B:{text:"和他人分享成果", val:"E"}, C:{text:"随心所欲", val:"N"}},
+  {q:"处理任务时，你更喜欢：", A:{text:"独立完成任务", val:"I"}, B:{text:"团队讨论和协作", val:"E"}, C:{text:"灵活处理", val:"N"}},
+  {q:"聚会中你通常：", A:{text:"只和熟人交谈", val:"I"}, B:{text:"积极参与活动，结识新朋友", val:"E"}, C:{text:"看情况", val:"N"}},
+  {q:"你获得能量的方式：", A:{text:"独处、安静环境", val:"I"}, B:{text:"与人互动交流", val:"E"}, C:{text:"中性", val:"N"}},
+  {q:"新环境中，你：", A:{text:"先观察，慢慢适应", val:"I"}, B:{text:"马上融入，认识新朋友", val:"E"}, C:{text:"随心而行", val:"N"}},
+  {q:"你在团队中：", A:{text:"喜欢独立完成任务", val:"I"}, B:{text:"喜欢集思广益、讨论方案", val:"E"}, C:{text:"视情况", val:"N"}},
+  {q:"聚会后的感受：", A:{text:"感到疲惫，需要独处", val:"I"}, B:{text:"精力充沛，兴奋", val:"E"}, C:{text:"中性", val:"N"}},
+  {q:"当有人倾诉时，你：", A:{text:"认真倾听，内心消化", val:"I"}, B:{text:"积极回应和交流", val:"E"}, C:{text:"看情况", val:"N"}},
+  {q:"你更关注：", A:{text:"眼前事实、现实细节", val:"S"}, B:{text:"可能性、未来发展", val:"N"}, C:{text:"不确定", val:"N"}},
+  {q:"学习新知识时，你更喜欢：", A:{text:"有明确步骤和实例", val:"S"}, B:{text:"理解原理和背后的模式", val:"N"}, C:{text:"看情况", val:"N"}},
+  {q:"处理问题时，你：", A:{text:"按经验和规则", val:"S"}, B:{text:"寻找新方法、创造性解决", val:"N"}, C:{text:"视情况而定", val:"N"}},
+  {q:"工作中你更关注：", A:{text:"流程和效率", val:"S"}, B:{text:"新机会和创新点", val:"N"}, C:{text:"中性", val:"N"}},
+  {q:"你记住事情的方式：", A:{text:"具体事实、数据", val:"S"}, B:{text:"概念、模式", val:"N"}, C:{text:"两者都可以", val:"N"}},
+  {q:"喜欢的故事类型：", A:{text:"描述现实生活或历史", val:"S"}, B:{text:"想象力丰富的科幻/幻想", val:"N"}, C:{text:"视故事而定", val:"N"}},
+  {q:"假期计划时，你：", A:{text:"注重景点和路线", val:"S"}, B:{text:"注重体验和冒险", val:"N"}, C:{text:"随机安排", val:"N"}},
+  {q:"会议上你更注意：", A:{text:"具体数据和结果", val:"S"}, B:{text:"战略方向和创意", val:"N"}, C:{text:"两者兼顾", val:"N"}},
+  {q:"你处理信息习惯：", A:{text:"从具体事实出发", val:"S"}, B:{text:"从整体概念出发", val:"N"}, C:{text:"看情况", val:"N"}},
+  {q:"当别人讲事情时，你：", A:{text:"注意细节", val:"S"}, B:{text:"注意背后意义或模式", val:"N"}, C:{text:"两者结合", val:"N"}},
+  {q:"做决定时，你：", A:{text:"根据逻辑和事实", val:"T"}, B:{text:"根据感受和人际影响", val:"F"}, C:{text:"视情况而定", val:"N"}},
+  {q:"你更在意：", A:{text:"合理性和公平", val:"T"}, B:{text:"感受和价值观", val:"F"}, C:{text:"两者都重要", val:"N"}},
+  {q:"对批评态度：", A:{text:"作为改进依据", val:"T"}, B:{text:"感觉受伤", val:"F"}, C:{text:"视情况而定", val:"N"}},
+  {q:"冲突中你：", A:{text:"用理性说服", val:"T"}, B:{text:"理解对方感受", val:"F"}, C:{text:"看情况", val:"N"}},
+  {q:"解决问题时：", A:{text:"注重效率和逻辑", val:"T"}, B:{text:"注重和谐与关系", val:"F"}, C:{text:"平衡考虑", val:"N"}},
+  {q:"对规则的态度：", A:{text:"合理即可，可灵活调整", val:"T"}, B:{text:"尊重人情和价值判断", val:"F"}, C:{text:"情况而定", val:"N"}},
+  {q:"朋友遇到问题找你：", A:{text:"给出分析和解决方案", val:"T"}, B:{text:"倾听并给予情感支持", val:"F"}, C:{text:"视情况而定", val:"N"}},
+  {q:"团队中你：", A:{text:"注重任务完成", val:"T"}, B:{text:"注重成员关系", val:"F"}, C:{text:"两者兼顾", val:"N"}},
+  {q:"评价事情标准：", A:{text:"合理性和逻辑", val:"T"}, B:{text:"感受和价值观", val:"F"}, C:{text:"视情况而定", val:"N"}},
+  {q:"希望别人评价你时：", A:{text:"认可能力和理性", val:"T"}, B:{text:"认可关心和善意", val:"F"}, C:{text:"平衡考虑", val:"N"}},
+  {q:"你更喜欢：", A:{text:"计划好行程，按步骤执行", val:"J"}, B:{text:"灵活安排，随时调整", val:"P"}, C:{text:"无偏好", val:"N"}},
+  {q:"完成任务时：", A:{text:"提前完成，按计划进行", val:"J"}, B:{text:"临近才完成", val:"P"}, C:{text:"看情况", val:"N"}},
+  {q:"突发事件：", A:{text:"感觉不安，喜欢有计划", val:"J"}, B:{text:"能灵活应对", val:"P"}, C:{text:"视情况而定", val:"N"}},
+  {q:"日常处理事情：", A:{text:"喜欢条理清晰", val:"J"}, B:{text:"边做边调整", val:"P"}, C:{text:"两者结合", val:"N"}},
+  {q:"收拾房间或桌面：", A:{text:"井井有条", val:"J"}, B:{text:"只要能用就行", val:"P"}, C:{text:"无偏好", val:"N"}},
+  {q:"工作/学习中：", A:{text:"先制定计划，再执行", val:"J"}, B:{text:"先做再调整", val:"P"}, C:{text:"看情况", val:"N"}},
+  {q:"对截止日期：", A:{text:"严格遵守，提前准备", val:"J"}, B:{text:"临近才完成", val:"P"}, C:{text:"视情况而定", val:"N"}},
+  {q:"对未来计划：", A:{text:"明确目标和步骤", val:"J"}, B:{text:"大方向即可，过程灵活", val:"P"}, C:{text:"随机安排", val:"N"}},
+  {q:"日常生活中：", A:{text:"喜欢规律作息", val:"J"}, B:{text:"随性而行", val:"P"}, C:{text:"看情况", val:"N"}},
+  {q:"信息处理时：", A:{text:"先整理再行动", val:"J"}, B:{text:"边收集边决定", val:"P"}, C:{text:"视情况", val:"N"}},
+];
+
+// ---- 随机打乱题目顺序 ----
+function shuffle(array){return array.sort(()=>Math.random()-0.5);}
+const shuffledQuestions = shuffle(questions);
+
+// ---- 生成表单 ----
+const form = document.getElementById('mbtiForm');
+shuffledQuestions.forEach((item, idx)=>{
+  const div = document.createElement('div');
+  div.className = 'question';
+  div.innerHTML = `<p>${idx+1}. ${item.q}</p>
+    <label><input type="radio" name="q${idx}" value="${item.A.val}"> ${item.A.text}</label>
+    <label><input type="radio" name="q${idx}" value="${item.B.val}"> ${item.B.text}</label>
+    <label><input type="radio" name="q${idx}" value="${item.C.val}"> ${item.C.text}</label>`;
+  form.appendChild(div);
+});
+
+// ---- 提交计算 ----
+document.getElementById('submitBtn').addEventListener('click', ()=>{
+  const answers = new FormData(form);
+  const score = {I:0,E:0,S:0,N:0,T:0,F:0,J:0,P:0};
+
+  for(let [k,v] of answers.entries()){
+    if(v==='N'){score.N+=0.5; score.S+=0.5;} // 中性加半分到两边
+    else score[v]++;
+  }
+
+  const type = [
+    score.I>=score.E?'I':'E',
+    score.S>=score.N?'S':'N',
+    score.T>=score.F?'T':'F',
+    score.J>=score.P?'J':'P'
+  ].join('');
+
+  const analysis = {
+    'ISTJ':'认真、负责、守纪律。优点：稳定可靠。缺点：保守，灵活性差。沟通：务实直接。职业：行政、财务、工程。',
+    'ISFJ':'耐心、细致、关怀他人。优点：可靠、助人为乐。缺点：过于顺从。沟通：温和、有耐心。职业：护理、教育、客服。',
+    'INFJ':'理想主义、洞察力强。优点：有远见、有同理心。缺点：过于敏感。沟通：深思熟虑。职业：咨询、心理学、创意。',
+    'INTJ':'独立、战略、逻辑性强。优点：高效、果断。缺点：固执、难社交。沟通：直接、理性。职业：科研、工程、咨询。',
+    'ISTP':'务实、擅长解决问题。优点：冷静、动手能力强。缺点：缺乏计划性。沟通：简明。职业：技术、工程、维修。',
+    'ISFP':'温和、感性、艺术性强。优点：有美感、善良。缺点：过于随性。沟通：温柔。职业：设计、艺术、护理。',
+    'INFP':'理想主义、忠于内心。优点：忠诚、有创意。缺点：过于理想化。沟通：感性、有耐心。职业：写作、创意、心理咨询。',
+    'INTP':'逻辑性强、分析能力强。优点：聪明、理性。缺点：社交能力弱。沟通：理性、条理清楚。职业：科研、分析、IT开发。',
+    'ESTP':'外向、现实、喜欢冒险。优点：适应力强、活跃。缺点：冲动、缺乏计划。沟通：直接。职业：销售、创业、活动策划。',
+    'ESFP':'外向、乐观、感性。优点：活泼、感染力强。缺点：不耐久性工作。沟通：热情。职业：演艺、服务、销售。',
+    'ENFP':'热情、创造力强。优点：积极、创新。缺点：易分心。沟通：表达力强。职业：创业、创意、传播。',
+    'ENTP':'创新、机智、善于应变。优点：机智、创造力强。缺点：易跳跃。沟通：有趣、辩论能力强。职业：创业、创意、咨询。',
+    'ESTJ':'组织能力强、注重效率。优点：领导力强。缺点：固执。沟通：直接。职业：管理、行政、工程。',
+    'ESFJ':'外向、关心他人。优点：善于合作。缺点：过于迎合他人。沟通：友好。职业：教育、服务、医疗。',
+    'ENFJ':'善于沟通、富有同理心。优点：有感染力。缺点：过于操心他人。沟通：富有同理心。职业：教育、管理、咨询。',
+    'ENTJ':'果断、有领导力。优点：高效、果断。缺点：控制欲强。沟通：直接、理性。职业：管理、战略、创业。'
+  };
+
+  document.getElementById('result').innerHTML = `<h2>你的 MBTI 类型：${type}</h2><p>${analysis[type]}</p>`;
+});
+</script>
+
+</body>
+</html>
