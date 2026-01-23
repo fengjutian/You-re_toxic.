@@ -58,6 +58,18 @@ Page({
     wx.navigateTo({ url: '/pages/pf16/pf16' })
   },
 
+  goToWAIS() {
+    wx.navigateTo({ url: '/pages/wais/wais' })
+  },
+
+  goToRaven() {
+    wx.navigateTo({ url: '/pages/raven/raven' })
+  },
+
+  goToMI() {
+    wx.navigateTo({ url: '/pages/mi/mi' })
+  },
+
   /**
    * 清除所有评估数据
    * 将全局数据中的tirsAnswers、rtdrsAnswers和analysis重置为空

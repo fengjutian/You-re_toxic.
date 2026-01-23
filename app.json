@@ -15,7 +15,9 @@
     "pages/disc/disc",
     "pages/riasec/riasec",
     "pages/pf16/pf16",
-    "pages/wais/wais"
+    "pages/wais/wais",
+    "pages/raven/raven",
+    "pages/mi/mi"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",

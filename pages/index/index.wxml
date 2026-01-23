@@ -49,17 +49,17 @@
         <view class="category-title">智力与能力测试</view>
       </view>
       <view class="tests-grid">
-        <view class="test-card">
+        <view class="test-card" bindtap="goToWAIS">
           <view class="test-name">WAIS / WISC（韦氏智力量表）</view>
           <view class="test-desc">成人/儿童智商测试</view>
           <view class="test-applicable">教育评估、心理咨询</view>
         </view>
-        <view class="test-card">
-          <view class="test-name">Raven’s Progressive Matrices（瑞文测验）</view>
+        <view class="test-card" bindtap="goToRaven">
+          <view class="test-name">Raven's Progressive Matrices（瑞文测验）</view>
           <view class="test-desc">非语言智力测试，抽象推理</view>
           <view class="test-applicable">学术研究、招聘测评</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToMI">
           <view class="test-name">多元智力测试（Gardner）</view>
           <view class="test-desc">语言、逻辑、空间、音乐、肢体、社交、内省等</view>
           <view class="test-applicable">教育、学习风格分析</view>

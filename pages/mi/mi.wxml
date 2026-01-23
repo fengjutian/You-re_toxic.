@@ -1,0 +1,109 @@
+<view class="container">
+
+  <!-- 介绍 -->
+  <view class="intro">
+    <view class="title">多元智力测评（Gardner）</view>
+    <view class="desc">
+      本测评用于了解你的学习与能力优势分布，
+      不代表智商高低，请按真实情况作答。
+    </view>
+    <view class="dim">语言 · 逻辑 · 空间 · 音乐</view>
+    <view class="dim">身体 · 人际 · 内省 · 自然</view>
+  </view>
+
+  <!-- 题目 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 结果 -->
+  <view wx:if="{{result}}" class="result">
+    <view class="result-title">你的多元智力分布</view>
+
+    <block wx:for="{{result}}" wx:key="key">
+      <view class="dimension-card">
+        <view class="dimension-header">
+          <view class="dimension-name">
+            <text class="cn-name">{{item.name}}</text>
+            <text class="en-name">{{item.enName}}</text>
+          </view>
+          <view class="dimension-level {{item.levelClass}}">{{item.level}}</view>
+        </view>
+
+        <view class="score-section">
+          <view class="score-info">
+            <text class="score-value">{{item.score}}</text>
+            <text class="score-max">/ {{item.maxScore}}</text>
+          </view>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.percentage}}%"></view>
+          </view>
+          <view class="score-percent">{{item.percentage}}%</view>
+        </view>
+
+        <view class="dimension-desc">{{item.desc}}</view>
+
+        <view class="keywords-section">
+          <block wx:for="{{item.keywords}}" wx:for-item="keyword" wx:key="*this">
+            <view class="keyword-tag">{{keyword}}</view>
+          </block>
+        </view>
+
+        <view class="coverage-note">
+          <text class="note-label">📌 覆盖范围：</text>
+          <text class="note-text">{{item.coverage}}</text>
+        </view>
+      </view>
+    </block>
+
+    <view class="coverage-info">
+      <view class="info-title">霍华德·加德纳多元智力理论</view>
+      <view class="info-item">
+        <text class="info-label">语言智力</text>
+        <text class="info-value">Linguistic</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">逻辑-数学智力</text>
+        <text class="info-value">Logical–Mathematical</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">空间智力</text>
+        <text class="info-value">Spatial</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">音乐智力</text>
+        <text class="info-value">Musical</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">身体-动觉智力</text>
+        <text class="info-value">Bodily–Kinesthetic</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">人际智力</text>
+        <text class="info-value">Interpersonal</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">内省智力</text>
+        <text class="info-value">Intrapersonal</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">自然观察智力</text>
+        <text class="info-value">Naturalistic</text>
+      </view>
+      <view class="info-item highlight">
+        <text class="info-label">💡 理论说明：</text>
+        <text class="info-value">多元智力理论认为智力不是单一的能力，而是多种相对独立的智能组合</text>
+      </view>
+    </view>
+  </view>
+
+</view>
