@@ -5,22 +5,48 @@
     "pages/forward/forward",
     "pages/reverse/reverse",
     "pages/result/result",
-    "pages/tips/tips",
-    "pages/gad7/gad7",
-    "pages/phq9/phq9",
-    "pages/pss14/pss14",
-    "pages/eq/eq",
-    "pages/mbti/mbti",
-    "pages/bigfive/bigfive",
-    "pages/disc/disc",
-    "pages/riasec/riasec",
-    "pages/pf16/pf16",
-    "pages/wais/wais",
-    "pages/raven/raven",
-    "pages/mi/mi",
-    "pages/pdq/pdq",
-    "pages/love/love",
-    "pages/sleep/sleep"
+    "pages/tips/tips"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/mental",
+      "name": "mental",
+      "pages": [
+        "gad7/gad7",
+        "phq9/phq9",
+        "pss14/pss14",
+        "eq/eq"
+      ]
+    },
+    {
+      "root": "subpackages/personality",
+      "name": "personality",
+      "pages": [
+        "mbti/mbti",
+        "bigfive/bigfive",
+        "disc/disc",
+        "riasec/riasec",
+        "pf16/pf16"
+      ]
+    },
+    {
+      "root": "subpackages/intelligence",
+      "name": "intelligence",
+      "pages": [
+        "wais/wais",
+        "raven/raven",
+        "mi/mi",
+        "pdq/pdq"
+      ]
+    },
+    {
+      "root": "subpackages/lifestyle",
+      "name": "lifestyle",
+      "pages": [
+        "love/love",
+        "sleep/sleep"
+      ]
+    }
   ],
   "window": {
     "navigationBarTitleText": "心理测试",

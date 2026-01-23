@@ -23,63 +23,63 @@ Page({
   },
 
   goToGAD7() {
-    wx.navigateTo({ url: '/pages/gad7/gad7' })
+    wx.navigateTo({ url: '/subpackages/mental/gad7/gad7' })
   },
 
   goToPHQ9() {
-    wx.navigateTo({ url: '/pages/phq9/phq9' })
+    wx.navigateTo({ url: '/subpackages/mental/phq9/phq9' })
   },
 
   goToPSS14() {
-    wx.navigateTo({ url: '/pages/pss14/pss14' })
+    wx.navigateTo({ url: '/subpackages/mental/pss14/pss14' })
   },
 
   goToEQ() {
-    wx.navigateTo({ url: '/pages/eq/eq' })
+    wx.navigateTo({ url: '/subpackages/mental/eq/eq' })
   },
 
   goToMBTI() {
-    wx.navigateTo({ url: '/pages/mbti/mbti' })
+    wx.navigateTo({ url: '/subpackages/personality/mbti/mbti' })
   },
 
   goToBigFive() {
-    wx.navigateTo({ url: '/pages/bigfive/bigfive' })
+    wx.navigateTo({ url: '/subpackages/personality/bigfive/bigfive' })
   },
 
   goToDisc() {
-    wx.navigateTo({ url: '/pages/disc/disc' })
+    wx.navigateTo({ url: '/subpackages/personality/disc/disc' })
   },
 
   goToRIASEC() {
-    wx.navigateTo({ url: '/pages/riasec/riasec' })
+    wx.navigateTo({ url: '/subpackages/personality/riasec/riasec' })
   },
 
   goToPF16() {
-    wx.navigateTo({ url: '/pages/pf16/pf16' })
+    wx.navigateTo({ url: '/subpackages/personality/pf16/pf16' })
   },
 
   goToWAIS() {
-    wx.navigateTo({ url: '/pages/wais/wais' })
+    wx.navigateTo({ url: '/subpackages/intelligence/wais/wais' })
   },
 
   goToRaven() {
-    wx.navigateTo({ url: '/pages/raven/raven' })
+    wx.navigateTo({ url: '/subpackages/intelligence/raven/raven' })
   },
 
   goToMI() {
-    wx.navigateTo({ url: '/pages/mi/mi' })
+    wx.navigateTo({ url: '/subpackages/intelligence/mi/mi' })
   },
 
   goToPDQ() {
-    wx.navigateTo({ url: '/pages/pdq/pdq' })
+    wx.navigateTo({ url: '/subpackages/intelligence/pdq/pdq' })
   },
 
   goToLove() {
-    wx.navigateTo({ url: '/pages/love/love' })
+    wx.navigateTo({ url: '/subpackages/lifestyle/love/love' })
   },
 
   goToSleep() {
-    wx.navigateTo({ url: '/pages/sleep/sleep' })
+    wx.navigateTo({ url: '/subpackages/lifestyle/sleep/sleep' })
   },
 
   /**

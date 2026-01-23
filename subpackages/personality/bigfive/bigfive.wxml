@@ -1,0 +1,65 @@
+<view class="container">
+
+  <!-- 五大人格维度说明 -->
+  <view class="dimensions">
+    <view class="dim-title">大五人格（OCEAN）维度说明</view>
+    <view class="dim-item">开放性 O：想象力、创造力、好奇心</view>
+    <view class="dim-item">责任心 C：自律、计划性、可靠性</view>
+    <view class="dim-item">外向性 E：社交性、活力、热情</view>
+    <view class="dim-item">宜人性 A：合作、友善、信任他人</view>
+    <view class="dim-item">神经质 N：情绪稳定性，分高易焦虑或紧张</view>
+  </view>
+
+  <!-- 提示 -->
+  <view class="notice">
+    请根据你平时的真实情况选择最符合的选项。1=非常不同意，5=非常同意
+  </view>
+
+  <!-- 题目列表 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{[1,2,3,4,5]}}" wx:key="*this"
+               class="option">
+          <radio value="{{item}}" /> {{item}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <!-- 提交按钮 -->
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 结果显示 -->
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="dimensions-list">
+      <view class="dimension-item" wx:for="{{result}}" wx:key="dim">
+        <view class="dim-info">
+          <view class="dim-name">{{item.name}}</view>
+          <view class="dim-desc">{{item.desc}}</view>
+        </view>
+        <view class="dim-score-section">
+          <view class="dim-score-value">{{item.score}}</view>
+          <view class="dim-score-range">{{item.min}}-{{item.max}}</view>
+          <view class="dim-percentage">{{item.percentage}}%</view>
+        </view>
+        <view class="dim-progress-bar">
+          <view class="dim-progress-fill" style="width: {{item.percentage}}%;"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">💡</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">各维度得分范围为 8-40 分，分数越高表示该特质越明显。</view>
+      </view>
+    </view>
+  </view>
+</view>
