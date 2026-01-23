@@ -16,19 +16,69 @@
 - **开发框架**：微信小程序原生开发（WXML, WXSS, JavaScript）
 - **数据存储**：微信小程序全局数据管理
 - **UI设计**：绿色主题线性渐变背景，现代化卡片式布局
+- **分包架构**：通过 `app.json` 的 `subpackages` 降低首包体积
 
 ## 主要文件结构
 
 ```
 ├── pages/
 │   ├── index/          # 首页：评估入口
+│   ├── relationship/   # 关系概述/引导页面
 │   ├── forward/        # 他人行为风险评估页面
 │   ├── reverse/        # 自我消耗风险评估页面
 │   ├── result/         # 风险分析结果页面
 │   └── tips/           # 保护建议页面
+├── subpackages/
+│   ├── mental/
+│   │   ├── gad7/
+│   │   ├── phq9/
+│   │   ├── pss14/
+│   │   └── eq/
+│   ├── personality/
+│   │   ├── mbti/
+│   │   ├── bigfive/
+│   │   ├── disc/
+│   │   ├── riasec/
+│   │   └── pf16/
+│   ├── intelligence/
+│   │   ├── wais/
+│   │   ├── raven/
+│   │   ├── mi/
+│   │   └── pdq/
+│   └── lifestyle/
+│       ├── love/
+│       └── sleep/
 ├── app.js              # 小程序入口文件
 ├── app.json            # 小程序配置文件
 └── README.md           # 项目说明文档
+```
+
+## 测评合集
+
+- 心理健康：`GAD-7`、`PHQ-9`、`PSS-14`、`EQ`
+- 人格特质：`MBTI`、`Big Five`、`DISC`、`RIASEC`、`16PF`
+- 认知能力：`WAIS`、`Raven`、`MI`、`PDQ`
+- 生活方式：`Love`、`Sleep`
+
+## 分包配置示例
+
+`app.json` 中的分包配置：
+```json
+{
+  "subpackages": [
+    { "root": "subpackages/mental", "pages": ["gad7/gad7", "phq9/phq9", "pss14/pss14", "eq/eq"] },
+    { "root": "subpackages/personality", "pages": ["mbti/mbti", "bigfive/bigfive", "disc/disc", "riasec/riasec", "pf16/pf16"] },
+    { "root": "subpackages/intelligence", "pages": ["wais/wais", "raven/raven", "mi/mi", "pdq/pdq"] },
+    { "root": "subpackages/lifestyle", "pages": ["love/love", "sleep/sleep"] }
+  ]
+}
+```
+
+## 首页跳转说明
+
+从首页跳转到分包页面示例：
+```javascript
+wx.navigateTo({ url: '/subpackages/mental/gad7/gad7' })
 ```
 
 ## 核心算法实现（result.js）
