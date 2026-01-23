@@ -11,7 +11,8 @@
     "pages/pss14/pss14",
     "pages/eq/eq",
     "pages/mbti/mbti",
-    "pages/bigfive/bigfive"
+    "pages/bigfive/bigfive",
+    "pages/disc/disc"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",

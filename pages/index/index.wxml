@@ -29,7 +29,7 @@
           <view class="test-desc">外向、责任心、宜人性、神经质、开放性</view>
           <view class="test-applicable">科学研究、心理咨询、人格评估</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToDisc">
           <view class="test-name">DISC</view>
           <view class="test-desc">支配型(D)、影响型(I)、稳定型(S)、谨慎型(C)</view>
           <view class="test-applicable">销售、管理、团队建设</view>

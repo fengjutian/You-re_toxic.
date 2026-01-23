@@ -1,0 +1,73 @@
+<view class="container">
+
+  <!-- 维度说明 -->
+  <view class="disc-intro">
+    <view class="title">DISC 人格测评</view>
+    <view class="desc">请选择更符合你日常行为的选项</view>
+    <view class="dim">D 支配型：果断、目标导向</view>
+    <view class="dim">I 影响型：外向、善表达</view>
+    <view class="dim">S 稳定型：耐心、可靠</view>
+    <view class="dim">C 谨慎型：理性、严谨</view>
+  </view>
+
+  <!-- 题目 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 结果 -->
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="type-section">
+      <view class="type-label">主要类型</view>
+      <view class="type-value">{{result.main}}</view>
+      <view class="combo-value">组合倾向：{{result.combo}}</view>
+      <view class="type-desc">{{result.desc}}</view>
+    </view>
+
+    <view class="dimensions-section">
+      <view class="dimensions-title">四维度得分</view>
+      <view class="dimension-item" wx:for="{{result.scores}}" wx:key="dim">
+        <view class="dim-header">
+          <view class="dim-code">{{item.dim}}</view>
+          <view class="dim-name">{{item.name}}</view>
+        </view>
+        <view class="dim-english">{{item.english}}</view>
+        <view class="dim-desc">{{item.desc}}</view>
+        <view class="dim-keywords">
+          <view class="keyword-tag" wx:for="{{item.keywords}}" wx:key="*this">#{{item}}</view>
+        </view>
+        <view class="dim-score-bar">
+          <view class="score-label">得分</view>
+          <view class="score-progress">
+            <view class="score-fill" style="width: {{item.count / 8 * 100}}%;"></view>
+          </view>
+          <view class="score-text">{{item.count}}/{{item.max}}</view>
+        </view>
+        <view wx:if="{{item.isMain}}" class="main-badge">主导</view>
+        <view wx:if="{{item.isCombo}}" class="combo-badge">次要</view>
+      </view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">💡</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">DISC 是行为风格评估工具，反映你的行为偏好和工作风格，每种类型都有其优势和价值。</view>
+      </view>
+    </view>
+  </view>
+
+</view>

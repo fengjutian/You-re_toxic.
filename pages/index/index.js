@@ -45,6 +45,10 @@ Page({
   goToBigFive() {
     wx.navigateTo({ url: '/pages/bigfive/bigfive' })
   },
+
+  goToDisc() {
+    wx.navigateTo({ url: '/pages/disc/disc' })
+  },
   
   /**
    * 清除所有评估数据
