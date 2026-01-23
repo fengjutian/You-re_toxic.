@@ -1,0 +1,86 @@
+<view class="container">
+
+  <!-- 介绍 -->
+  <view class="intro">
+    <view class="title">霍兰德职业兴趣测试（RIASEC）</view>
+    <view class="desc">请选择你更感兴趣或更愿意去做的事情</view>
+    <view class="dim">R 现实型：动手实践、机械工具</view>
+    <view class="dim">I 研究型：分析思考、探索问题</view>
+    <view class="dim">A 艺术型：创意表达、自由形式</view>
+    <view class="dim">S 社会型：帮助他人、沟通教学</view>
+    <view class="dim">E 企业型：领导说服、商业目标</view>
+    <view class="dim">C 常规型：规则秩序、数据流程</view>
+  </view>
+
+  <!-- 题目 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 结果 -->
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">测评结果</view>
+    </view>
+
+    <view class="type-section">
+      <view class="type-label">你的 RIASEC 类型</view>
+      <view class="type-code">{{result.code}}</view>
+      <view class="type-summary">{{result.summary}}</view>
+      <view class="type-scope">类型覆盖：{{result.typeScope}}</view>
+    </view>
+
+    <view class="jobs-section">
+      <view class="jobs-title">适合的方向示例</view>
+      <view class="jobs-list">{{result.jobs}}</view>
+    </view>
+
+    <view class="dimensions-section">
+      <view class="dimensions-title">六维度得分</view>
+      <view class="dimension-item" wx:for="{{result.scores}}" wx:key="dim">
+        <view class="dim-header">
+          <view class="dim-code {{item.isMain ? 'active' : ''}}">{{item.dim}}</view>
+          <view class="dim-name">{{item.name}}</view>
+        </view>
+        <view class="dim-english">{{item.english}}</view>
+        <view class="dim-desc">{{item.desc}}</view>
+        <view class="dim-keywords">
+          <view class="keyword-tag" wx:for="{{item.keywords}}" wx:key="*this">#{{item}}</view>
+        </view>
+        <view class="dim-score-bar">
+          <view class="score-label">得分</view>
+          <view class="score-progress">
+            <view class="score-fill {{item.isMain ? 'active' : ''}}" style="width: {{item.count / 4 * 100}}%;"></view>
+          </view>
+          <view class="score-text">{{item.count}}/{{item.max}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="comparison-card">
+      <view class="comparison-icon">📊</view>
+      <view class="comparison-text">
+        <view class="comparison-title">与其他测试工具的关系</view>
+        <view class="comparison-message">{{result.comparison}}</view>
+      </view>
+    </view>
+
+    <view class="note-card">
+      <view class="note-icon">💡</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">RIASEC 通过职业兴趣类型帮助你探索适合的职业方向，建议结合其他测试工具（如 MBTI、Big Five）获得更全面的自我认知。</view>
+      </view>
+    </view>
+  </view>
+
+</view>

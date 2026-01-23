@@ -49,6 +49,10 @@ Page({
   goToDisc() {
     wx.navigateTo({ url: '/pages/disc/disc' })
   },
+
+  goToRIASEC() {
+    wx.navigateTo({ url: '/pages/riasec/riasec' })
+  },
   
   /**
    * 清除所有评估数据

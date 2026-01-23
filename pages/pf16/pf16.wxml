@@ -1,0 +1,39 @@
+<view class="container">
+
+  <!-- 介绍 -->
+  <view class="intro">
+    <view class="title">16PF 人格因素测评</view>
+    <view class="desc">
+      本测评用于了解你的人格结构倾向，
+      无对错之分，请按真实情况选择。
+    </view>
+  </view>
+
+  <!-- 题目 -->
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <!-- 结果 -->
+  <view wx:if="{{result}}" class="result">
+    <view class="result-title">人格因素画像</view>
+
+    <block wx:for="{{result.list}}" wx:key="key">
+      <view class="factor">
+        <text class="key">{{item.key}}</text>
+        <text class="score">得分：{{item.score}}</text>
+        <view class="desc">{{item.desc}}</view>
+      </view>
+    </block>
+  </view>
+
+</view>

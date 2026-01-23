@@ -35,11 +35,6 @@
           <view class="test-applicable">销售、管理、团队建设</view>
         </view>
         <view class="test-card">
-          <view class="test-name">霍兰德职业兴趣测试（RIASEC）</view>
-          <view class="test-desc">6类兴趣类型：现实型、研究型、艺术型、社会型、企业型、常规型</view>
-          <view class="test-applicable">职业规划、求职</view>
-        </view>
-        <view class="test-card">
           <view class="test-name">16PF（16 Personality Factors）</view>
           <view class="test-desc">16个人格维度</view>
           <view class="test-applicable">人力资源、职业发展</view>
@@ -110,11 +105,6 @@
       </view>
       <view class="tests-grid">
         <view class="test-card">
-          <view class="test-name">霍兰德职业兴趣（RIASEC）</view>
-          <view class="test-desc">六种兴趣类型</view>
-          <view class="test-applicable">职业指导</view>
-        </view>
-        <view class="test-card">
           <view class="test-name">职业性格倾向测评（如职业锚）</view>
           <view class="test-desc">评估工作动机和职业偏好</view>
           <view class="test-applicable">职业规划、岗位匹配</view>
@@ -123,6 +113,11 @@
           <view class="test-name">价值观与动机测试</view>
           <view class="test-desc">测量工作价值观和激励因素</view>
           <view class="test-applicable">HR、管理</view>
+        </view>
+        <view class="test-card" bindtap="goToRIASEC">
+          <view class="test-name">霍兰德职业兴趣测试（RIASEC）</view>
+          <view class="test-desc">6类兴趣类型：现实型、研究型、艺术型、社会型、企业型、常规型</view>
+          <view class="test-applicable">职业规划、求职</view>
         </view>
       </view>
     </view>

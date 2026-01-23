@@ -12,7 +12,9 @@
     "pages/eq/eq",
     "pages/mbti/mbti",
     "pages/bigfive/bigfive",
-    "pages/disc/disc"
+    "pages/disc/disc",
+    "pages/riasec/riasec",
+    "pages/pf16/pf16"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",
