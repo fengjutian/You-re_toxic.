@@ -23,7 +23,7 @@
 
 .submit {
   margin-top: 24rpx;
-  background: #4A90E2;
+  background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
   color: #fff;
 }
 

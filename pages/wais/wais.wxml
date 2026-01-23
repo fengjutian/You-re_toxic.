@@ -1,0 +1,93 @@
+<view class="container">
+
+  <view class="intro">
+    <view class="title">认知能力评估（韦氏结构取向）</view>
+    <view class="desc">
+      本测评用于了解你的认知能力结构倾向，
+      不等同于正式 IQ 测试，仅供个人成长参考。
+    </view>
+    <view class="dim">言语理解（VCI）</view>
+    <view class="dim">知觉推理（PRI）</view>
+    <view class="dim">工作记忆（WMI）</view>
+    <view class="dim">加工速度（PSI）</view>
+  </view>
+
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <view wx:if="{{result}}" class="result">
+    <view class="result-title">你的认知能力画像</view>
+
+    <block wx:for="{{result}}" wx:key="key">
+      <view class="dimension-card">
+        <view class="dimension-header">
+          <view class="dimension-name">{{item.name}}</view>
+          <view class="dimension-level {{item.levelClass}}">{{item.level}}</view>
+        </view>
+
+        <view class="score-section">
+          <view class="score-info">
+            <text class="score-value">{{item.score}}</text>
+            <text class="score-max">/ {{item.maxScore}}</text>
+          </view>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.percentage}}%"></view>
+          </view>
+          <view class="score-percent">{{item.percentage}}%</view>
+        </view>
+
+        <view class="dimension-desc">{{item.desc}}</view>
+
+        <view class="keywords-section">
+          <block wx:for="{{item.keywords}}" wx:for-item="keyword" wx:key="*this">
+            <view class="keyword-tag">{{keyword}}</view>
+          </block>
+        </view>
+
+        <view class="coverage-note">
+          <text class="note-label">📌 覆盖范围：</text>
+          <text class="note-text">{{item.coverage}}</text>
+        </view>
+      </view>
+    </block>
+
+    <view class="coverage-info">
+      <view class="info-title">维度覆盖说明</view>
+      <view class="info-item">
+        <text class="info-label">心理状态：</text>
+        <text class="info-value">PHQ-9 / GAD-7 / PSS-14</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">人格结构：</text>
+        <text class="info-value">Big Five / 16PF</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">行为风格：</text>
+        <text class="info-value">DISC</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">性格偏好：</text>
+        <text class="info-value">MBTI</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">职业兴趣：</text>
+        <text class="info-value">RIASEC</text>
+      </view>
+      <view class="info-item highlight">
+        <text class="info-label">认知能力：</text>
+        <text class="info-value">韦氏结构（VCI / PRI / WMI / PSI）</text>
+      </view>
+    </view>
+  </view>
+
+</view>
