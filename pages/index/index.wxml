@@ -129,8 +129,8 @@
         <view class="category-title">其他心理测评</view>
       </view>
       <view class="tests-grid">
-        <view class="test-card">
-          <view class="test-name">人格障碍自测（如PDQ-4+）</view>
+        <view class="test-card" bindtap="goToPDQ">
+          <view class="test-name">人格障碍自测</view>
           <view class="test-desc">用于初步筛查人格特质异常</view>
           <view class="test-applicable">自我认知参考</view>
         </view>
@@ -139,12 +139,12 @@
           <view class="test-desc">智力、情绪、社交发展评估</view>
           <view class="test-applicable">教育、心理咨询</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToLove">
           <view class="test-name">恋爱/情感心理测试</view>
           <view class="test-desc">爱情风格、依恋类型（安全型、回避型、焦虑型）</view>
           <view class="test-applicable">情感关系探索</view>
         </view>
-        <view class="test-card">
+        <view class="test-card" bindtap="goToSleep">
           <view class="test-name">睡眠与生活习惯测试</view>
           <view class="test-desc">评估睡眠质量和压力负荷</view>
           <view class="test-applicable">健康管理</view>

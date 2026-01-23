@@ -70,6 +70,18 @@ Page({
     wx.navigateTo({ url: '/pages/mi/mi' })
   },
 
+  goToPDQ() {
+    wx.navigateTo({ url: '/pages/pdq/pdq' })
+  },
+
+  goToLove() {
+    wx.navigateTo({ url: '/pages/love/love' })
+  },
+
+  goToSleep() {
+    wx.navigateTo({ url: '/pages/sleep/sleep' })
+  },
+
   /**
    * 清除所有评估数据
    * 将全局数据中的tirsAnswers、rtdrsAnswers和analysis重置为空

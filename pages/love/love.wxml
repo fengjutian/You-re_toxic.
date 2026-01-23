@@ -1,0 +1,82 @@
+<view class="container">
+  <view class="intro">
+    <view class="title">恋爱/情感心理测试</view>
+    <view class="desc">
+      测评用于了解你的恋爱态度、情感风格和沟通方式，仅供参考。
+    </view>
+  </view>
+
+  <block wx:for="{{questions}}" wx:key="index">
+    <view class="card">
+      <view class="question">{{index + 1}}. {{item.text}}</view>
+      <radio-group data-index="{{index}}" bindchange="onSelect">
+        <label wx:for="{{item.options}}" wx:key="value" class="option">
+          <radio value="{{item.value}}" /> {{item.label}}
+        </label>
+      </radio-group>
+    </view>
+  </block>
+
+  <button class="submit" bindtap="submit">查看结果</button>
+
+  <view wx:if="{{result}}" class="result">
+    <view class="result-title">你的恋爱情感画像</view>
+
+    <block wx:for="{{result}}" wx:key="key">
+      <view class="dimension-card">
+        <view class="dimension-header">
+          <view class="dimension-name">{{item.name}}</view>
+          <view class="dimension-level {{item.levelClass}}">{{item.level}}</view>
+        </view>
+
+        <view class="score-section">
+          <view class="score-info">
+            <text class="score-value">{{item.score}}</text>
+            <text class="score-max">/ {{item.maxScore}}</text>
+          </view>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.percentage}}%"></view>
+          </view>
+          <view class="score-percent">{{item.percentage}}%</view>
+        </view>
+
+        <view class="dimension-desc">{{item.desc}}</view>
+
+        <view class="subtype-note">
+          <text class="note-label">💡 你的倾向：</text>
+          <text class="note-text">{{item.subtypeDesc}}</text>
+        </view>
+
+        <view class="keywords-section">
+          <block wx:for="{{item.keywords}}" wx:for-item="keyword" wx:key="*this">
+            <view class="keyword-tag">{{keyword}}</view>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <view class="coverage-info">
+      <view class="info-title">维度说明</view>
+      <view class="info-item">
+        <text class="info-label">依恋风格</text>
+        <text class="info-value">安全型 / 焦虑型 / 回避型</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">爱情价值观</text>
+        <text class="info-value">承诺 / 激情 / 亲密</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">沟通与冲突处理</text>
+        <text class="info-value">情绪表达 / 冲突应对</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">情感满意度</text>
+        <text class="info-value">关系满足感</text>
+      </view>
+      <view class="info-item highlight">
+        <text class="info-label">💝 提示：</text>
+        <text class="info-value">了解自己的恋爱风格有助于建立更健康的关系</text>
+      </view>
+    </view>
+  </view>
+</view>

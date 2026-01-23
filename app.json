@@ -17,7 +17,10 @@
     "pages/pf16/pf16",
     "pages/wais/wais",
     "pages/raven/raven",
-    "pages/mi/mi"
+    "pages/mi/mi",
+    "pages/pdq/pdq",
+    "pages/love/love",
+    "pages/sleep/sleep"
   ],
   "window": {
     "navigationBarTitleText": "心理测试",
