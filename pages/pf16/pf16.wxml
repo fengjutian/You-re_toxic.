@@ -24,16 +24,40 @@
   <button class="submit" bindtap="submit">查看结果</button>
 
   <!-- 结果 -->
-  <view wx:if="{{result}}" class="result">
-    <view class="result-title">人格因素画像</view>
+  <view wx:if="{{result}}" class="result-card">
+    <view class="result-header">
+      <view class="result-title">16PF 人格因素画像</view>
+    </view>
 
     <block wx:for="{{result.list}}" wx:key="key">
-      <view class="factor">
-        <text class="key">{{item.key}}</text>
-        <text class="score">得分：{{item.score}}</text>
-        <view class="desc">{{item.desc}}</view>
+      <view class="factor-card">
+        <view class="factor-header">
+          <view class="factor-key">{{item.key}}</view>
+          <view class="factor-name">{{item.name}}</view>
+          <view class="factor-english">{{item.english}}</view>
+        </view>
+        <view class="factor-score">
+          <view class="score-label">得分</view>
+          <view class="score-bar">
+            <view class="score-fill" style="width: {{item.score}}%;"></view>
+          </view>
+          <view class="score-text">{{item.score}}</view>
+        </view>
+        <view class="factor-desc-title">{{item.shortDesc}}</view>
+        <view class="factor-desc">{{item.desc}}</view>
+        <view class="factor-keywords">
+          <view class="keyword-tag" wx:for="{{item.keywords}}" wx:key="*this">#{{item}}</view>
+        </view>
       </view>
     </block>
+
+    <view class="note-card">
+      <view class="note-icon">💡</view>
+      <view class="note-text">
+        <view class="note-title">说明</view>
+        <view class="note-message">16PF 通过16个基本人格因素提供深入的人格分析，建议结合其他测试工具获得更全面的自我认知。</view>
+      </view>
+    </view>
   </view>
 
 </view>

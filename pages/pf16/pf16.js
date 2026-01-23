@@ -98,12 +98,113 @@ Page({
       Q4:'紧张与压力水平'
     }
 
+    // 16个基本人格因素详细信息
+    const factorDetails = {
+      A: {
+        name: '乐群性',
+        english: 'Warmth',
+        shortDesc: '人际亲和程度',
+        keywords: ['亲和', '友好', '合作']
+      },
+      B: {
+        name: '推理能力',
+        english: 'Reasoning',
+        shortDesc: '认知与推理能力',
+        keywords: ['理性', '分析', '逻辑']
+      },
+      C: {
+        name: '情绪稳定性',
+        english: 'Emotional Stability',
+        shortDesc: '情绪稳定水平',
+        keywords: ['稳定', '冷静', '抗压']
+      },
+      E: {
+        name: '支配性',
+        english: 'Dominance',
+        shortDesc: '支配与主导倾向',
+        keywords: ['主导', '果断', '影响']
+      },
+      F: {
+        name: '活跃性',
+        english: 'Liveliness',
+        shortDesc: '活跃与表达倾向',
+        keywords: ['活跃', '外向', '表达']
+      },
+      G: {
+        name: '规则意识',
+        english: 'Rule-Consciousness',
+        shortDesc: '规则与责任意识',
+        keywords: ['规则', '责任', '秩序']
+      },
+      H: {
+        name: '社交大胆性',
+        english: 'Social Boldness',
+        shortDesc: '社交大胆程度',
+        keywords: ['大胆', '社交', '主动']
+      },
+      I: {
+        name: '敏感性',
+        english: 'Sensitivity',
+        shortDesc: '情感敏感度',
+        keywords: ['敏感', '情感', '共情']
+      },
+      L: {
+        name: '警觉性',
+        english: 'Vigilance',
+        shortDesc: '警觉与怀疑程度',
+        keywords: ['警觉', '怀疑', '审慎']
+      },
+      M: {
+        name: '抽象性',
+        english: 'Abstractedness',
+        shortDesc: '想象与抽象倾向',
+        keywords: ['抽象', '想象', '创意']
+      },
+      N: {
+        name: '私密性',
+        english: 'Privateness',
+        shortDesc: '私密与谨慎程度',
+        keywords: ['私密', '谨慎', '保守']
+      },
+      O: {
+        name: '忧虑性',
+        english: 'Apprehension',
+        shortDesc: '自我担忧程度',
+        keywords: ['忧虑', '担忧', '焦虑']
+      },
+      Q1: {
+        name: '开放性',
+        english: 'Openness to Change',
+        shortDesc: '变革与开放倾向',
+        keywords: ['开放', '变革', '适应']
+      },
+      Q2: {
+        name: '独立性',
+        english: 'Self-Reliance',
+        shortDesc: '独立自主程度',
+        keywords: ['独立', '自主', '自信']
+      },
+      Q3: {
+        name: '自律性',
+        english: 'Perfectionism',
+        shortDesc: '自律与控制能力',
+        keywords: ['自律', '完美', '控制']
+      },
+      Q4: {
+        name: '紧张性',
+        english: 'Tension',
+        shortDesc: '紧张与压力水平',
+        keywords: ['紧张', '压力', '松弛']
+      }
+    }
+
     this.setData({
       result: {
         list: Object.keys(scores).map(k => ({
           key: k,
           score: scores[k],
-          desc: descMap[k]
+          desc: descMap[k],
+          ...factorDetails[k]
         }))
       }
     })

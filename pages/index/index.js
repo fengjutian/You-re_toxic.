@@ -53,7 +53,11 @@ Page({
   goToRIASEC() {
     wx.navigateTo({ url: '/pages/riasec/riasec' })
   },
-  
+
+  goToPF16() {
+    wx.navigateTo({ url: '/pages/pf16/pf16' })
+  },
+
   /**
    * 清除所有评估数据
    * 将全局数据中的tirsAnswers、rtdrsAnswers和analysis重置为空
